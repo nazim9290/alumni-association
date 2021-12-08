@@ -1,0 +1,8 @@
+.footer {
+  background-color: #7f8fa6;
+  padding-bottom: 20px;
+}
+.footer-item a {
+  text-decoration: none;
+  color: white;
+}

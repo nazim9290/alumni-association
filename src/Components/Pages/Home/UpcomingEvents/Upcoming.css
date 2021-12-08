@@ -1,0 +1,16 @@
+.timer {
+  display: flex;
+  margin: 10px;
+}
+.timer span {
+  display: flex;
+  margin: 10px;
+}
+.event-date {
+  background-color: rgb(235, 230, 230);
+  text-align: center;
+}
+.event-date p {
+  background-color: gainsboro;
+  padding: 10px;
+}

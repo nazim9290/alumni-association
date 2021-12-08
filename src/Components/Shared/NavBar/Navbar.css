@@ -1,0 +1,38 @@
+.title-name {
+  font-size: 30px;
+  text-align: center;
+  background-color: #dff9fb;
+  padding: 10px 0;
+  font-weight: 500;
+}
+.app-bar a {
+  text-decoration: none;
+  color: white;
+  margin-left: 15px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.top-menu a {
+  text-decoration: none;
+  color: white;
+  margin-left: 15px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.menu-item a {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.logo {
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+}
+.res-logo {
+  background-color: white;
+  padding: 5px;
+  border-radius: 50%;
+}
