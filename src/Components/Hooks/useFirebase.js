@@ -1,3 +1,4 @@
+import InitializeFirebase from "./../FirebaseConfig/InitializeFirebase";
 import { useState, useEffect } from "react";
 import {
   getAuth,
@@ -10,7 +11,6 @@ import {
   getIdToken,
   signOut,
 } from "firebase/auth";
-import InitializeFirebase from "../FirebaseConfig/InitializeFirebase";
 
 // initialize firebase app
 InitializeFirebase();
@@ -96,7 +96,7 @@ const useFirebase = () => {
   }, [auth]);
 
   useEffect(() => {
-    fetch(`https://stark-caverns-04377.herokuapp.com/users/${user.email}`)
+    fetch(`local/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => setAdmin(data.admin));
   }, [user.email]);
@@ -115,7 +115,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName };
-    fetch("https://stark-caverns-04377.herokuapp.com/users", {
+    fetch("local/users", {
       method: method,
       headers: {
         "content-type": "application/json",
