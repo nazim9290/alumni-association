@@ -50,7 +50,11 @@ function Navbar() {
           </span>
         </Box>
       </div>
-      <AppBar position="static" className="app-bar" title={<img src={logo} />}>
+      <AppBar
+        position="static"
+        className="app-bar"
+        title={<img src={logo} alt="" />}
+      >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -96,9 +100,7 @@ function Navbar() {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Link to={`/${page}`} textAlign="center">
-                      {page}
-                    </Link>
+                    <Link to={`/${page}`}>{page}</Link>
                   </MenuItem>
                 ))}
               </Menu>

@@ -12,7 +12,12 @@ const Mission = () => {
   const [mission, setMission] = useState([]);
 
   useEffect(() => {
-    fetch("./mission.json")
+    fetch("./mission.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setMission(data));
   }, []);
@@ -21,8 +26,8 @@ const Mission = () => {
       <h1>Our Mission & Vision</h1>
       <Grid container spacing={2}>
         {mission.map((ms, i) => (
-          <Grid item xs={6} md={4}>
-            <Card key={i}>
+          <Grid key={i} item xs={6} md={4}>
+            <Card>
               <CardActionArea>
                 <CardMedia
                   component="img"

@@ -9,13 +9,22 @@
 }
 
 .swiper-slide img {
+  object-fit: cover;
+  object-position: center;
+
   width: 100%;
-  height: 90vh;
+  height: 80vh;
 }
 
-.swiper-slide .title {
-  font-size: 41px;
-  font-weight: 300;
+.swiper-slide.title {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 20pt;
+  font-family: "Mark Bold" !important;
 }
 
 .swiper-slide .subtitle {
@@ -26,6 +35,9 @@
   font-size: 14px;
   max-width: 400px;
   line-height: 1.3;
+}
+.carousel-title {
+  margin-top: -50px;
 }
 @media only screen and (max-width: 991px) {
   .swiper-slide {

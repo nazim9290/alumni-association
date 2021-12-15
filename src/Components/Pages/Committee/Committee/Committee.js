@@ -1,6 +1,4 @@
 import React from "react";
-import Navbar from "../../../Shared/NavBar/Navbar";
-
 const Committee = () => {
   return (
     <div>
