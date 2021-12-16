@@ -1,9 +1,6 @@
 import { Container, Grid } from "@mui/material";
 import React from "react";
-<<<<<<< HEAD
-=======
 import "./Member.css";
->>>>>>> 9ab5d5e776788ebb9e3209d7bc6e60b451f3c0e3
 
 const Member = () => {
   return (

@@ -1,11 +1,7 @@
 import { Container } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { Box } from '@mui/system';
+import Box from '@mui/system/Box';
 import React from "react";
-<<<<<<< HEAD
-=======
-import "./Committee.css";
->>>>>>> 9ab5d5e776788ebb9e3209d7bc6e60b451f3c0e3
 const Committee = () => {
   return (
     <Container sx={{my:5}}>
