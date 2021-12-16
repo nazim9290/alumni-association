@@ -1,11 +1,12 @@
-import React from "react";
-import "./About.css";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import React from "react";
+import "./About.css";
 
 const About = () => {
   return (
     <Box className="about-section">
+      <Box sx={{m:4}}>
       <h1>About</h1>
       <p>
         ১৯৫৬ সালে তৎকালীন কুমিল্লা জেলার চাঁদপুর মহকুমার হাজীগঞ্জ থানার(
@@ -24,6 +25,7 @@ const About = () => {
       >
         More About Us
       </Button>
+      </Box>
     </Box>
   );
 };
