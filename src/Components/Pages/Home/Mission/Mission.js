@@ -27,7 +27,7 @@ const Mission = () => {
       <Grid container spacing={2}>
         {mission.map((ms, i) => (
           <Grid key={i} item xs={6} md={4}>
-            <Card>
+            <Card sx={{ height: "100%" }}>
               <CardActionArea>
                 <CardMedia
                   component="img"

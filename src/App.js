@@ -16,6 +16,8 @@ import UserRegistration from "./Components/Pages/UserRegistration/UserRegistrati
 import Navbar from "./Components/Shared/NavBar/Navbar";
 import Footer from "./Components/Shared/Footer/Footer";
 import AuthProvider from "./Components/Context/AuthProvider";
+import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
+
 
 function App() {
   return (
@@ -29,6 +31,7 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/Blog" element={<Blog />} />
+            <Route path="Blog/:blogId" element={<BlogDetails />} />
             <Route path="/Committee" element={<Committee />} />
             <Route path="/Member" element={<Member />} />
             <Route path="/becomeMember" element={<UserRegistration />} />

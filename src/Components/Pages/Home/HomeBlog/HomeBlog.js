@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -18,7 +18,9 @@ import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import typography from "@mui/system/typography";
+import LinkShare from "./LinkShare";
+import { useNavigate } from "react-router-dom";
+import BlogComment from "./../../BlogDetails/BlogComment";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -30,6 +32,28 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const HomeBlog = () => {
+  const [open, setOpen] = React.useState(false);
+  const [openComment, setOpenComment] = React.useState(false);
+  let navigate = useNavigate();
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickOpenComment = () => {
+    setOpenComment(true);
+  };
+
+  const handleCloseComment = () => {
+    setOpenComment(false);
+  };
+  const handleBlogDetails = (id) => {
+    navigate(`/Blog/${id}`);
+  };
   return (
     <div
       style={{
@@ -54,11 +78,11 @@ const HomeBlog = () => {
         <Grid
           container
           sx={{ py: 5 }}
-          spacing={{ xs: 2, md: 3 }}
+          spacing={{ xs: 1, md: 3 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {Array.from(Array(3)).map((_, index) => (
-            <Grid item xs={2} sm={4} md={4} key={index}>
+            <Grid item xs={4} sm={4} md={4} key={index}>
               <Card>
                 <CardMedia
                   component="img"
@@ -122,7 +146,10 @@ const HomeBlog = () => {
                     </StyledBadge>
                   </IconButton>
 
-                  <IconButton aria-label="InsertCommentIcon">
+                  <IconButton
+                    onClick={handleClickOpenComment}
+                    aria-label="InsertCommentIcon"
+                  >
                     <StyledBadge badgeContent={0} color="secondary">
                       <InsertCommentIcon />
                     </StyledBadge>
@@ -135,12 +162,17 @@ const HomeBlog = () => {
 
                     <RemoveRedEyeIcon />
                   </IconButton>
-                  <IconButton aria-label="share">
+                  <IconButton onClick={handleClickOpen} aria-label="share">
                     <StyledBadge badgeContent={0} color="secondary">
                       <ShareIcon />
                     </StyledBadge>
                   </IconButton>
-                  <Button sx={{ mx: 2 }} size="larg">
+                  <Button
+                    onClick={() => {
+                      handleBlogDetails(index);
+                    }}
+                    size="large"
+                  >
                     See More
                   </Button>
                 </CardActions>
@@ -149,6 +181,11 @@ const HomeBlog = () => {
           ))}
         </Grid>
       </Container>
+      <LinkShare handleClose={handleClose} open={open} />
+      <BlogComment
+        handleCloseComment={handleCloseComment}
+        openComment={openComment}
+      />
     </div>
   );
 };
