@@ -41,14 +41,29 @@ function Navbar() {
   };
   return (
     <div>
-      <div>
-        <Box className="title-name">
-          হাজী মাদবর আলী হাচানিয়া দাখিল মাদ্রাসা প্রাক্তন ছাত্র ছাত্রী পরিষদ
-          <span>
-            <AddIcCallRoundedIcon />
-            <FacebookOutlinedIcon />
-          </span>
+      <div className="title-name">
+        <Box
+          sx={{
+            display: "flex",
+            p: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Box sx={{ flexGrow: 1, mr: 2 }}>
+            হাজী মাদবর আলী হাচানিয়া দাখিল মাদ্রাসা প্রাক্তন ছাত্র ছাত্রী পরিষদ
+          </Box>
+          <a href="tel:01984467364">
+            <AddIcCallRoundedIcon sx={{ mr: 1 }} color="primary" />
+          </a>
+          <a
+            href="https://www.facebook.com/groups/hasania.alumni.association/"
+            target="_blank"
+          >
+            <FacebookOutlinedIcon color="primary" />
+          </a>
         </Box>
+        <span></span>
       </div>
       <AppBar
         position="static"

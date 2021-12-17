@@ -8,7 +8,7 @@ const Committee = () => {
   return (
     <Container sx={{ my: 5 }}>
       <Box component="h2" sx={{ flexGrow: 1 }}>
-        Committee
+        Executive Committee
       </Box>
       <Grid
         container

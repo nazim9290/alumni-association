@@ -1,11 +1,13 @@
 .timer {
-  display: flex;
-  margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
 }
+
 .timer span {
-  display: flex;
-  margin: 10px;
+  font-size: 3em;
 }
+
 .event-date {
   background-color: rgb(235, 230, 230);
   text-align: center;

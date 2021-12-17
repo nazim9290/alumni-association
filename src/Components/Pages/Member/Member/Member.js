@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import React from "react";
@@ -6,6 +7,7 @@ import "./Member.css";
 const Member = () => {
   return (
     <Container sx={{ my: 5 }}>
+      <Box>Member of the Executive Committee</Box>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
