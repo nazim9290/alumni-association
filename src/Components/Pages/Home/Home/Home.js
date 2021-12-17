@@ -1,11 +1,12 @@
 import React from "react";
 import "./Home.css";
-import Carousel from "../Carousel/Carousel";
+
 import Mission from "../Mission/Mission";
 import UpcomingEvents from "../UpcomingEvents/UpcomingEvents";
 import About from "../About/About";
 import Message from "../Message/Message";
 import HomeBlog from "../HomeBlog/HomeBlog";
+import Carousel from "../Carousel/Carousel";
 
 const Home = () => {
   return (

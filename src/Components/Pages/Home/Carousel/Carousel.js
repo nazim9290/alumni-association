@@ -1,49 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { data } from "./fronslider";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import "swiper/swiper.min.css";
 import "swiper/modules/pagination/pagination.min.css";
-import SwiperCore, { Autoplay, Pagination } from "swiper";
+import "swiper/modules/navigation/navigation.min.css";
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Mousewheel,
+  Keyboard,
+} from "swiper";
+
 import "./Carousel.css";
-import CarouselImg from "./CarouselImg";
+import { data } from "./FrontSlide";
 
 const Carousel = () => {
-  // const [frontCovers, setFrontCovers] = useState([]);
-  SwiperCore.use([Autoplay]);
-  SwiperCore.use([Pagination]);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/frontCover", {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => setFrontCovers(data));
-  // }, []);
-
-  // console.log(frontCovers);
-
+  SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
   return (
     <div>
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={"auto"}
-        autoplay={{ delay: 1000 }}
-        pagination={{
-          clickable: true,
-        }}
-        centeredSlides
-        loop={true}
-        className="swiper-container"
-      >
-        {data.map((data) => (
-          <SwiperSlide key={data.name}>
-            <CarouselImg data={data} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <>
+        <Swiper
+          cssMode={true}
+          navigation={true}
+          autoplay={{ delay: 1000 }}
+          loop={true}
+          mousewheel={true}
+          keyboard={true}
+          pagination={{
+            clickable: true,
+          }}
+          centeredSlides
+          className="swiper-container"
+        >
+          {data.map((i) => (
+            <SwiperSlide>
+              <img src={i.img} alt="" />
+              <h4 className="title">{i.title}</h4>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </>
     </div>
   );
 };

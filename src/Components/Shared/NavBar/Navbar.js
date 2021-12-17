@@ -80,7 +80,7 @@ function Navbar() {
               color="inherit"
               sx={{ mr: 10, ml: 5, display: { xs: "none", md: "flex" } }}
             >
-              <img src={logo} alt="" width="80" />
+              <img src={logo} alt="" width="50" />
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>

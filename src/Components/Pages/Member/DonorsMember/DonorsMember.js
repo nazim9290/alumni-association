@@ -44,7 +44,7 @@ const DonorsMember = () => {
         >
           {Array.from(Array(12)).map((_, index) => (
             <SwiperSlide>
-              <Card sx={{ maxWidth: 400 }}>
+              <Card sx={{ maxWidth: 400, my: 2 }}>
                 <CardActionArea>
                   <CardMedia
                     component="img"

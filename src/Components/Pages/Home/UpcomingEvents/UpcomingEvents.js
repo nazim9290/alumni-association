@@ -23,42 +23,48 @@ const UpcomingEvents = () => {
             <h2>UPCOMING EVENT</h2>
             <h3>CLUB SPONSORSHIP 2020-2021</h3>
           </div>
-          <div className="timer">
-            <section>
-              <h3>87</h3>
-              <p>
-                <small>Days</small>
-              </p>
-            </section>
-            <span>:</span>
-            <section>
-              <h3>87</h3>
-              <p>
-                <small>Hours</small>
-              </p>
-            </section>
-            <span>:</span>
-            <section>
-              <h3>87</h3>
-              <p>
-                <small>Minute</small>
-              </p>
-            </section>
-            <span>:</span>
-            <section>
-              <h3>87</h3>
-              <p>
-                <small>Seconds</small>
-              </p>
-            </section>
-          </div>
-          <Button
-            sx={{ width: "75%", p: 2 }}
-            color="warning"
-            variant="contained"
-          >
-            Join Now
-          </Button>
+          <Grid container>
+            <Grid item xs={6} md={8}>
+              <div className="timer">
+                <section>
+                  <h2>87</h2>
+                  <p>
+                    <small>Days</small>
+                  </p>
+                </section>
+                <span>:</span>
+                <section>
+                  <h2>87</h2>
+                  <p>
+                    <small>Hours</small>
+                  </p>
+                </section>
+                <span>:</span>
+                <section>
+                  <h2>87</h2>
+                  <p>
+                    <small>Minute</small>
+                  </p>
+                </section>
+                <span>:</span>
+                <section>
+                  <h2>87</h2>
+                  <p>
+                    <small>Seconds</small>
+                  </p>
+                </section>
+              </div>
+            </Grid>
+            <Grid item xs={6} md={6}>
+              <Button
+                sx={{ width: "75%", p: 2 }}
+                color="warning"
+                variant="contained"
+              >
+                Join Now
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={4} md={1}>
           <div className="event-date">

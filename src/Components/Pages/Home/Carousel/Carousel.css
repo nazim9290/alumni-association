@@ -4,18 +4,34 @@
 }
 
 .swiper-slide {
-  background-position: center;
-  background-size: cover;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  height: 80vh;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 .swiper-slide img {
+  display: block;
+  width: 50%;
+  height: 50vh;
   object-fit: cover;
   object-position: center;
-  width: 100%;
-  height: 80vh;
 }
-
-.swiper-slide.title {
+.title {
   position: absolute;
   top: 75%;
   left: 50%;
@@ -25,26 +41,10 @@
   font-size: 20pt;
   font-family: "Mark Bold" !important;
 }
-.carousel-img {
-  color: #fff;
-  position: absolute;
-  top: 75%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 @media only screen and (max-width: 991px) {
   .swiper-slide {
     background-size: contain !important;
     background-repeat: no-repeat;
     background-position: 0 50px !important;
-  }
-}
-@media screen and (max-width: 480px) {
-  .carousel-img {
-    color: #fff;
-    position: absolute;
-    top: 75%;
-    font-size: 50px;
-    font-weight: 900;
   }
 }

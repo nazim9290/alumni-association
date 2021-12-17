@@ -6,7 +6,6 @@ import { Route } from "react-router-dom";
 import About from "./Components/Pages/About/About/About";
 import Events from "./Components/Pages/Events/Events/Events";
 import Blog from "./Components/Pages/Blog/Blog/Blog";
-import Committee from "./Components/Pages/Committee/Committee/Committee";
 import DashBoard from "./Components/Pages/DashBoard/DashBoard/DashBoard";
 import Login from "./Components/Pages/Login/Login";
 import Registration from "./Components/Pages/Login/Registration";
@@ -17,6 +16,7 @@ import Footer from "./Components/Shared/Footer/Footer";
 import AuthProvider from "./Components/Context/AuthProvider";
 import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
 import Members from "./Components/Pages/Member/Members/Members";
+import Committees from "./Components/Pages/Committee/Committee/Committees";
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
             <Route path="/Events" element={<Events />} />
             <Route path="/Blog" element={<Blog />} />
             <Route path="Blog/:blogId" element={<BlogDetails />} />
-            <Route path="/Committee" element={<Committee />} />
+            <Route path="/Committee" element={<Committees />} />
             <Route path="/Member" element={<Members />} />
             <Route path="/becomeMember" element={<UserRegistration />} />
             <Route path="/Dashboard" element={<DashBoard />} />
