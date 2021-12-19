@@ -1,10 +1,16 @@
 import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Member.css";
 
 const Member = () => {
+  const [members, setMembers] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/allMembers")
+      .then((res) => res.json())
+      .then((data) => setMembers(data));
+  }, []);
   return (
     <Container sx={{ my: 5 }}>
       <Box>Member of the Executive Committee</Box>
@@ -13,15 +19,12 @@ const Member = () => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {Array.from(Array(6)).map((_, index) => (
+        {members.map((member, index) => (
           <Grid item xs={2} sm={3} md={3} key={index}>
             <div class="team-wrap">
               <div class="team-member text-center">
                 <div class="team-img">
-                  <img
-                    src="http://deothemes.com/envato/enigma/html/img/team_2.jpg"
-                    alt=""
-                  />
+                  <img src={member.img} alt="" />
                   <div class="overlay">
                     <div class="team-details text-center">
                       <p>
@@ -39,7 +42,7 @@ const Member = () => {
                           <i class="fab fa-google-plus"></i>
                         </a>
                         <a href="#">
-                          <i class="fab fa-envelope"></i>
+                          <i class="far fa-envelope"></i>
                         </a>
                       </div>
                     </div>

@@ -6,7 +6,6 @@ import { Route } from "react-router-dom";
 import About from "./Components/Pages/About/About/About";
 import Events from "./Components/Pages/Events/Events/Events";
 import Blog from "./Components/Pages/Blog/Blog/Blog";
-import DashBoard from "./Components/Pages/DashBoard/DashBoard/DashBoard";
 import Login from "./Components/Pages/Login/Login";
 import Registration from "./Components/Pages/Login/Registration";
 import Notfound from "./Components/Pages/Notfound/Notfound";
@@ -17,6 +16,7 @@ import AuthProvider from "./Components/Context/AuthProvider";
 import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
 import Members from "./Components/Pages/Member/Members/Members";
 import Committees from "./Components/Pages/Committee/Committee/Committees";
+import DashBoard from "./Components/DashBoard/DashBoard";
 
 function App() {
   return (

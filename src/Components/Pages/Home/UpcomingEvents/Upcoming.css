@@ -1,18 +1,63 @@
+.event-title h1 {
+  font-size: 3em;
+}
+.event-title h2 {
+  font-size: 2em;
+}
+
 .timer {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: -50px;
 }
-
-.timer span {
+.timer h2 {
   font-size: 3em;
 }
-
+.timer span {
+  font-size: 6em;
+}
+.timer p {
+  margin-top: -50px;
+}
 .event-date {
+  margin-top: -80px;
   background-color: rgb(235, 230, 230);
   text-align: center;
 }
 .event-date p {
   background-color: gainsboro;
   padding: 10px;
+}
+@media only screen and (max-width: 480px) {
+  .event-date {
+    margin: 0;
+    background-color: rgb(235, 230, 230);
+    text-align: center;
+  }
+  .timer {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 0px;
+  }
+  .event-title h1 {
+    font-size: 2em;
+  }
+  .event-title h2 {
+    font-size: 1em;
+  }
+  .timer h2 {
+    font-size: 1em;
+  }
+  .timer span {
+    font-size: 2em;
+  }
+  .timer p {
+    margin-top: -10px;
+  }
 }

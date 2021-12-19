@@ -17,12 +17,13 @@ import { data } from "./FrontSlide";
 const Carousel = () => {
   SwiperCore.use([Navigation, Pagination, Mousewheel, Keyboard, Autoplay]);
   return (
-    <div>
+    <div className="carousel">
       <>
+        <marquee>This text will scroll from right to left</marquee>
         <Swiper
           cssMode={true}
           navigation={true}
-          autoplay={{ delay: 1000 }}
+          autoplay={{ delay: 2500 }}
           loop={true}
           mousewheel={true}
           keyboard={true}

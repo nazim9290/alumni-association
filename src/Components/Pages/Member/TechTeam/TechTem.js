@@ -1,14 +1,14 @@
 import { Container, Grid, Paper } from "@mui/material";
 import React from "react";
 import Box from "@mui/material/Box";
-import { typography } from "@mui/system";
+import Typography from "@mui/material/Typography";
 
 const TechTeam = () => {
   return (
     <Box component="div" sx={{ bgcolor: "info.main", p: 3 }}>
       <Container>
         <Box component="h2" color="white">
-          Punormiloni Committee
+          Tech Team
         </Box>
         <Grid
           container
@@ -27,13 +27,13 @@ const TechTeam = () => {
                   />
                 </Box>
                 <br />
-                <typography variant="h6" component="div">
+                <Typography variant="h6" component="div">
                   ডা: মোহাম্মদ মেহেদী হাসান মজুমদার
-                </typography>
+                </Typography>
                 <br />
-                <typography variant="h6" component="div">
+                <Typography variant="h6" component="div">
                   মেডিকেল অফিসার, ঢাকা মেডিকেল কলেজ
-                </typography>
+                </Typography>
               </Paper>
             </Grid>
           ))}

@@ -18,12 +18,13 @@ import "./Navbar.css";
 import useAuth from "./../../Hooks/useAuth";
 
 const pages = ["Home", "About", "Events", "Committee", "Blog", "Member"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  console.log(user);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -148,13 +149,19 @@ function Navbar() {
               ))}
               <Link to="/becomeMember">Be Come a Member</Link>
             </Box>
-            {!user?.email ? (
-              <Link to="/login">Login</Link>
-            ) : (
+            {user?.email ? (
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user.displayName} src={user.photoURL} />
+                    <Avatar sx={{ width: 50, height: 50 }}>
+                      {user.photoURL === null ? (
+                        `${user.displayName.split(" ")[0][0]}${
+                          user.displayName.split(" ")[1][0]
+                        }`
+                      ) : (
+                        <img src={user?.photoURL} alt="" />
+                      )}
+                    </Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -175,11 +182,22 @@ function Navbar() {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                      <Link to={`/${setting}`} textAlign="center">
+                        {setting}
+                      </Link>
                     </MenuItem>
                   ))}
+                  <Typography
+                    sx={{ cursor: "pointer" }}
+                    onClick={logout}
+                    textAlign="center"
+                  >
+                    Logout
+                  </Typography>
                 </Menu>
               </Box>
+            ) : (
+              <Link to="/login">Login</Link>
             )}
           </Toolbar>
         </Container>

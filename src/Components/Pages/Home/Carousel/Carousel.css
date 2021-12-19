@@ -2,6 +2,17 @@
   width: 100%;
   height: 100%;
 }
+.carousel {
+  background-image: linear-gradient(
+    to bottom,
+    #eff2f2,
+    #cbedee,
+    #a4e7ec,
+    #73e0eb,
+    #12d9eb
+  );
+  padding: 5px 0;
+}
 
 .swiper-slide {
   text-align: center;
@@ -39,12 +50,25 @@
   color: white;
   font-weight: bold;
   font-size: 20pt;
-  font-family: "Mark Bold" !important;
+  font-family: "Noto Sans Bengali" !important;
 }
 @media only screen and (max-width: 991px) {
   .swiper-slide {
     background-size: contain !important;
     background-repeat: no-repeat;
     background-position: 0 50px !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .title {
+    position: absolute;
+    top: 70%;
+    left: 0;
+    transform: translate(-0%, -0%);
+    color: rgb(229, 184, 11);
+    font-weight: 900;
+    font-size: 15pt;
+    font-family: "Noto Sans Bengali" !important;
+    padding: 10px 0;
   }
 }
