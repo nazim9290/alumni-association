@@ -1,10 +1,10 @@
 import React from "react";
-import BlogCreate from "./BlogCreate/BlogCreate";
+import BlogsAdd from "./BlogsCrete/BlogsAdd";
 
 const DashBoard = () => {
   return (
     <div>
-      <BlogCreate />
+      <BlogsAdd />
     </div>
   );
 };

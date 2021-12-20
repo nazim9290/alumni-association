@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import "./Blog.css";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
@@ -18,9 +19,11 @@ import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LinkShare from "./../../Home/HomeBlog/LinkShare";
 import BlogComment from "./../../BlogDetails/BlogComment";
+import axios from "axios";
+import removeStyle from "./remove_style";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -35,6 +38,24 @@ const Blog = () => {
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
   let navigate = useNavigate();
+
+  const [ispost, setpost] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/blog")
+      .then(function (response) {
+        // handle success
+        setpost(response.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }, []);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,7 +101,7 @@ const Blog = () => {
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {Array.from(Array(6)).map((_, index) => (
+          {ispost.map((post, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <Card sx={{ height: "100%" }}>
                 <CardMedia
@@ -104,36 +125,33 @@ const Blog = () => {
                       left: "50%",
                     }}
                   >
-                    Technology
+                    {post.category}
                   </Paper>
                   <Typography gutterBottom variant="h5" component="div">
-                    বিষাদের সুরে প্রিয় শিক্ষকের বিদায় সংবর্ধনা
+                    {post.title}
                   </Typography>
                   <Typography
                     sx={{ mb: 1 }}
                     variant="body2"
                     color="text.secondary"
                   >
-                    মো: গোলাম মোস্তাফা। রাজধানীর ভাটারা থানার খিলবাড়ী টেক এলাকার
-                    হাজী মাদবর আলী হাচানিয়া দাখিল মাদরাসায় শিক্ষকতা করছেন প্রায়
-                    ২৬ বছর। মাদ্রাসাটির সহকারি সুপারিনটেনডেন্টের দায়িত্বে থাকা
-                    এই শিক্ষক সম্প্রতি রাজধানীর খিলক্ষেত ইসলামিয়া দাখিল
-                    মাদ্রাসায় সুপারিনটেনডেন্ট হিসেবে নিয়োগ পেয়েছেন। তবে বিষয়টি
-                    আনন্দের হলেও বিষাদের ছায়া নেমেছে হাজী মাদবর আলী হাচানিয়া
-                    দাখিল মাদরাসায়। প্রিয় শিক্ষকের বিদায়ে অশ্রুসিক্ত দীর্ঘ সময়ের
-                    সহকর্মী, সাবেক ও বর্তমান শিক্ষার্থী এবং শিক্ষাপ্রতিষ্ঠান
-                    সংশ্লিষ্টরা।
+                    <div
+                      className="post__description"
+                      dangerouslySetInnerHTML={{
+                        __html: post?.description?.slice(0, 200),
+                      }}
+                    />
+                    <Link to="">...learn more</Link>
                   </Typography>
 
                   <Stack direction="row" alignItems="center" gap={1}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/1.jpg"
-                    />
+                    <Avatar alt={post?.writer?.name} src={post?.writer?.img} />
                     <Box sx={{ textAlign: "left" }}>
-                      <Typography variant="body1">Nazim</Typography>
+                      <Typography variant="body1">
+                        {post?.writer?.name}
+                      </Typography>
                       <Typography color="text.secondary">
-                        22 september 2000
+                        {post?.date}
                       </Typography>
                     </Box>
                   </Stack>

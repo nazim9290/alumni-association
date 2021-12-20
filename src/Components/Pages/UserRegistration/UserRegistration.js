@@ -52,6 +52,7 @@ const UserRegistration = () => {
               </p>
             )}
           </div>
+
           <div>
             <label>Your Email</label>
             <input

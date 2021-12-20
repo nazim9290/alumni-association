@@ -4,6 +4,7 @@ import "../../Home/UpcomingEvents/Upcoming.css";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 import Blogpractice from "./../../../DashBoard/BlogCreate/Blogpractice";
+import Blogs from "../../../DashBoard/BlogsCrete/Blogs";
 
 const Events = () => {
   return (
@@ -82,7 +83,7 @@ const Events = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Blogpractice />
+      <Blogs />
     </div>
   );
 };

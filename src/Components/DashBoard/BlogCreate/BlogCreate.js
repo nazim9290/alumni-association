@@ -6,6 +6,7 @@ import draftToHtml from "draftjs-to-html";
 import DraftDefaultConfig from "./Config";
 import { Box, Container } from "@mui/material";
 import "../../../../node_modules/draft-js/dist/Draft.css";
+import BlogsAdd from "../BlogsCrete/BlogsAdd";
 const axios = require("axios");
 
 const BlogCreate = () => {
@@ -33,9 +34,9 @@ const BlogCreate = () => {
   function uploadImageCallBack(file) {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "https://api.imgur.com/images/alumni");
+      xhr.open("POST", "https://api.imgur.com/3/image/");
       const data = new FormData();
-      xhr.setRequestHeader("Authorization", "Client-ID 662b8dffad3451c");
+      xhr.setRequestHeader("Authorization", "Client-ID c065fbcb2fca414");
       data.append("image", file);
       xhr.send(data);
       xhr.addEventListener("load", () => {
@@ -95,6 +96,7 @@ const BlogCreate = () => {
           history: { inDropdown: true },
         }}
       /> */}
+      <BlogsAdd />
     </Container>
   );
 };
