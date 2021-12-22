@@ -32,7 +32,7 @@ const Message = () => {
                 alt="Paella dish"
               />
               <CardContent>
-                <Typography variant="pre" color="text.secondary">
+                <Typography variant="paragraph" color="text.secondary">
                   নিজমেহার মডেল পাইলট উচ্চ বিদ্যালয়”অ্যালামনাই অ্যাসোসিয়েশন”
                   কমিটির সভাপতি” হিসেবে দায়িত্ব পালনের সুযোগ পাওয়া সত্যিই আমার
                   জন্য গর্ব ও সম্মানের। প্রতিষ্ঠার পরবর্তী অত্র বিদ্যালয় থেকে
@@ -43,7 +43,7 @@ const Message = () => {
                 </Typography>
               </CardContent>
               <CardContent>
-                <Typography pre>
+                <Typography paragraph>
                   বিদ্যালয়-এর শিক্ষার পরিবেশ উন্নয়নে সহযোগিতা করা, শিক্ষার
                   উন্নয়নের জন্য বিভিন্ন কর্মসূচি গ্রহণ করার জন্য সকলকে এক সাথে
                   কাজ করতে হবে। সময়ের পরিবর্তনের সাথে সাথে বৈশ্বিক
@@ -81,7 +81,7 @@ const Message = () => {
                 alt="Paella dish"
               />
               <CardContent>
-                <Typography variant="pre" color="text.secondary">
+                <Typography variant="paragraph" color="text.secondary">
                   চাঁদপুর জেলার শাহরাস্তি থানার ঐতিহ্যবাহী স্কুল “ নিজমেহার মডেল
                   পাইলট উচ্চ বিদ্যালয়” অ্যালামনাই অ্যাসোসিয়েশন কমিটির” সাধারন
                   সম্পাদক” হিসেবে মনোনীত ও দায়িত্ব পালনের সুযোগ পাওয়া সত্যিই

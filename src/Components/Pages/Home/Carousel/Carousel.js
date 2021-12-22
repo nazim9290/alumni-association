@@ -33,8 +33,8 @@ const Carousel = () => {
           centeredSlides
           className="swiper-container"
         >
-          {data.map((i) => (
-            <SwiperSlide>
+          {data.map((i, index) => (
+            <SwiperSlide key={index}>
               <img src={i.img} alt="" />
               <h4 className="title">{i.title}</h4>
             </SwiperSlide>

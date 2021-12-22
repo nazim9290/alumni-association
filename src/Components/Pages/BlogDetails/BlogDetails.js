@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -32,6 +32,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const BlogDetails = () => {
+  const [blogDescription, setBlogDescription] = useState({});
   const { blogId } = useParams();
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
@@ -50,6 +51,11 @@ const BlogDetails = () => {
   const handleCloseComment = () => {
     setOpenComment(false);
   };
+  useEffect(() => {
+    fetch(`https://calm-escarpment-64359.herokuapp.com/blog/${blogId}`)
+      .then((res) => res.json())
+      .then((data) => setBlogDescription(data));
+  }, []);
 
   return (
     <div>
@@ -63,25 +69,29 @@ const BlogDetails = () => {
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-              বিষাদের সুরে প্রিয় শিক্ষকের বিদায় সংবর্ধনা
+              {blogDescription.title}
             </Typography>
-            <Typography sx={{ mb: 1 }} variant="body2" color="text.secondary">
-              মো: গোলাম মোস্তাফা। রাজধানীর ভাটারা থানার খিলবাড়ী টেক এলাকার হাজী
-              মাদবর আলী হাচানিয়া দাখিল মাদরাসায় শিক্ষকতা করছেন প্রায় ২৬ বছর।
-              মাদ্রাসাটির সহকারি সুপারিনটেনডেন্টের দায়িত্বে থাকা এই শিক্ষক
-              সম্প্রতি রাজধানীর খিলক্ষেত ইসলামিয়া দাখিল মাদ্রাসায়
-              সুপারিনটেনডেন্ট হিসেবে নিয়োগ পেয়েছেন। তবে বিষয়টি আনন্দের হলেও
-              বিষাদের ছায়া নেমেছে হাজী মাদবর আলী হাচানিয়া দাখিল মাদরাসায়। প্রিয়
-              শিক্ষকের বিদায়ে অশ্রুসিক্ত দীর্ঘ সময়ের সহকর্মী, সাবেক ও বর্তমান
-              শিক্ষার্থী এবং শিক্ষাপ্রতিষ্ঠান সংশ্লিষ্টরা।
-            </Typography>
+            <Typography
+              sx={{ mb: 1 }}
+              variant="body2"
+              color="text.secondary"
+              className="blog-description"
+              dangerouslySetInnerHTML={{
+                __html: blogDescription?.description?.slice(0, 200),
+              }}
+            ></Typography>
 
             <Stack direction="row" alignItems="center" gap={1}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-              <Box sx={{ textAlign: "left" }}>
-                <Typography variant="body1">Nazim</Typography>
+              <Avatar
+                alt={blogDescription?.writer?.name}
+                src={blogDescription?.writer?.img}
+              />
+              <Box sx={{ textalign: "left" }}>
+                <Typography variant="body1">
+                  {blogDescription?.writer?.name}
+                </Typography>
                 <Typography color="text.secondary">
-                  22 september 2000
+                  {blogDescription?.date}
                 </Typography>
               </Box>
             </Stack>

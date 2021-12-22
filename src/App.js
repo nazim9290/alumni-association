@@ -17,6 +17,8 @@ import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
 import Members from "./Components/Pages/Member/Members/Members";
 import Committees from "./Components/Pages/Committee/Committee/Committees";
 import DashBoard from "./Components/DashBoard/DashBoard";
+import Profile from "./Components/DashBoard/Profile/Profile";
+import Edit from "./Components/DashBoard/BlogsCrete/Edit";
 
 function App() {
   return (
@@ -30,7 +32,9 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/Blog" element={<Blog />} />
-            <Route path="Blog/:blogId" element={<BlogDetails />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Blog/:blogId" element={<BlogDetails />} />
+            <Route path="/BlogEdit/:blogId" element={<Edit />} />
             <Route path="/Committee" element={<Committees />} />
             <Route path="/Member" element={<Members />} />
             <Route path="/becomeMember" element={<UserRegistration />} />

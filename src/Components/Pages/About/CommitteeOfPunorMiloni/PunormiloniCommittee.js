@@ -7,7 +7,7 @@ const PunormiloniCommittee = () => {
   const [pmCommittee, setPmCommittee] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/pmCommittee")
+    fetch("https://calm-escarpment-64359.herokuapp.com/pmCommittee")
       .then((res) => res.json())
       .then((data) => setPmCommittee(data));
   }, []);

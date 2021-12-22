@@ -2,7 +2,7 @@ export default {
   toolbar: {
     inline: { inDropdown: true },
     list: { inDropdown: true },
-    textAlign: { inDropdown: true },
+    textalign: { inDropdown: true },
     link: { inDropdown: true },
     history: { inDropdown: true },
   },

@@ -23,7 +23,7 @@ import { Link, useNavigate } from "react-router-dom";
 import LinkShare from "./../../Home/HomeBlog/LinkShare";
 import BlogComment from "./../../BlogDetails/BlogComment";
 import axios from "axios";
-import removeStyle from "./remove_style";
+import Regex from "./Regex";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -37,12 +37,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 const Blog = () => {
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
-  let navigate = useNavigate();
-
+  const navigate = useNavigate();
   const [ispost, setpost] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/blog")
+      .get("https://calm-escarpment-64359.herokuapp.com/blog")
       .then(function (response) {
         // handle success
         setpost(response.data);
@@ -108,21 +107,21 @@ const Blog = () => {
                   component="img"
                   style={{ height: "", width: "100%" }}
                   alt="green iguana"
-                  objectFit="cover"
-                  objectPosition="center"
+                  objectfit="cover"
+                  objectposition="center"
                   image="https://scontent.fkix2-2.fna.fbcdn.net/v/t39.30808-6/p526x296/260725833_2068174273330479_2675550629278720756_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=825194&_nc_eui2=AeEwZLAtikNJhqb_pu_IMr2QCxfJIMSWyrgLF8kgxJbKuP3_E3JL_mBny3c7nbYzXJQltF9cMzw6psYDJ7ivn-F7&_nc_ohc=Af2g4gaMjTQAX8RCd_i&_nc_ht=scontent.fkix2-2.fna&oh=00_AT9TaBoBxcafNuZLYjtnsIQtSZqx0cjGw4P2jk7552Pr6A&oe=61BF60AB"
                 />
                 <CardContent>
                   <Paper
                     elevation={3}
                     sx={{
-                      p: 1,
+                      p: 0.5,
                       width: "50%",
                       bgcolor: "#8e44ad",
                       color: "#f8f8f8",
                       position: "relative",
-                      top: "-50px",
-                      left: "50%",
+                      top: "-30px",
+                      left: "25%",
                     }}
                   >
                     {post.category}
@@ -131,22 +130,24 @@ const Blog = () => {
                     {post.title}
                   </Typography>
                   <Typography
-                    sx={{ mb: 1 }}
+                    className="post-description"
                     variant="body2"
                     color="text.secondary"
                   >
-                    <div
+                    {Regex(post?.description)}
+
+                    {/* <div
                       className="post__description"
                       dangerouslySetInnerHTML={{
                         __html: post?.description?.slice(0, 200),
                       }}
-                    />
+                    /> */}
                     <Link to="">...learn more</Link>
                   </Typography>
 
                   <Stack direction="row" alignItems="center" gap={1}>
                     <Avatar alt={post?.writer?.name} src={post?.writer?.img} />
-                    <Box sx={{ textAlign: "left" }}>
+                    <Box sx={{ textalign: "left" }}>
                       <Typography variant="body1">
                         {post?.writer?.name}
                       </Typography>
@@ -186,7 +187,7 @@ const Blog = () => {
                   </IconButton>
                   <Button
                     onClick={() => {
-                      handleBlogDetails(index);
+                      handleBlogDetails(post._id);
                     }}
                     size="large"
                   >

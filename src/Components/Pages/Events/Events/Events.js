@@ -2,10 +2,6 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import "../../Home/UpcomingEvents/Upcoming.css";
 import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
-import Blogpractice from "./../../../DashBoard/BlogCreate/Blogpractice";
-import Blogs from "../../../DashBoard/BlogsCrete/Blogs";
-
 const Events = () => {
   return (
     <div>
@@ -83,7 +79,6 @@ const Events = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Blogs />
     </div>
   );
 };

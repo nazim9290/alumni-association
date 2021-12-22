@@ -1,16 +1,4 @@
-.post__description {
-  text-align: justify !important;
-  height: 100px;
-  overflow-y: hidden;
-}
-.post__description p {
-  text-decoration: none !important;
-}
-.post__description img {
-  display: none !important;
-}
-.post__description [style] {
-  text-align: start !important;
-  font-weight: 100 !important;
-  font-size: 16px !important;
+.post-description {
+  text-align: justify;
+  margin-bottom: 2px;
 }

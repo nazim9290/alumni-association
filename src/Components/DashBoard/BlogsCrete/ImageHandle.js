@@ -1,4 +1,3 @@
-
 function uploadImageCallBack(file) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest(); // eslint-disable-line no-undef

@@ -10,6 +10,7 @@ import NowDate from "./NowDate";
 import categorys from "./useCategory";
 import useAuth from "./../../Hooks/useAuth";
 import { Container } from "@mui/material";
+import uploadImageCallBack from "./ImageHandle";
 
 function BlogsAdd() {
   const { user } = useAuth();
@@ -19,8 +20,8 @@ function BlogsAdd() {
     category: "",
   });
   const nowDate = NowDate();
-  console.log(nowDate);
-  console.log(user);
+  // console.log(nowDate);
+  // console.log(user);
   const onChangeValue = (e) => {
     setuserInfo({
       ...userInfo,
@@ -44,7 +45,7 @@ function BlogsAdd() {
         return;
       }
       axios
-        .post(`http://localhost:5000/blog`, {
+        .post(`https://calm-escarpment-64359.herokuapp.com/blog`, {
           title: userInfo.title,
           description: userInfo.description.value,
           category: userInfo.category,
@@ -64,35 +65,6 @@ function BlogsAdd() {
       throw error;
     }
   };
-  function uploadImageCallBack(file) {
-    return new Promise((resolve, reject) => {
-      const url =
-        "https://api.imgbb.com/1/upload?keya33750f1c1668cf02c02d8e65c60255a";
-
-      let xhr = new XMLHttpRequest();
-
-      let fd = new FormData();
-      fd.append("image", file);
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-      // Update progress (can be used to show progress indicator)
-      /* xhr.upload.addEventListener("progress", function (e) {
-      updateProgress(i, (e.loaded * 100.0) / e.total || 100);
-    }); */
-      xhr.addEventListener("readystatechange", function (e) {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-          //updateProgress(i, 100); // <- Add this
-          //console.log(xhr.responseText);
-        } else if (xhr.readyState === 4 && xhr.status !== 200) {
-          // Error. Inform the user
-        }
-      });
-
-      xhr.open("POST", url, true);
-
-      xhr.send(fd);
-    });
-  }
   return (
     <Container sx={{ my: 5 }} className="blogs">
       <div className="App">

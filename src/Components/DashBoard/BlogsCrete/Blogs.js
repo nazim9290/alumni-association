@@ -4,22 +4,24 @@ import axios from "axios";
 import "./Blogs.css";
 
 function Blogs() {
-  useEffect(() => {
-    viewPost();
-  }, []);
-
   const [ispost, setpost] = useState([]);
-  const viewPost = async () => {
-    try {
-      await axios.get(`http://localhost:5000/blog`).then((res) => {
-        if (res.data.success === true) {
-          setpost(res.data.listall);
-        }
+  useEffect(() => {
+    axios
+      .get("https://calm-escarpment-64359.herokuapp.com/blog")
+      .then(function (response) {
+        // handle success
+        setpost(response.data);
+        // console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
       });
-    } catch (error) {
-      throw error;
-    }
-  };
+  }, []);
+  console.log("hello");
 
   return (
     <div className="App">
@@ -29,10 +31,6 @@ function Blogs() {
             {" "}
             React <span> wysiwyg </span> text editor{" "}
           </h1>
-          <Link to="/Add" className="btn btn__theme btn__add">
-            {" "}
-            Create New{" "}
-          </Link>
 
           {ispost.map((item, index) => (
             <div className="post__list" key={index}>
@@ -43,7 +41,7 @@ function Blogs() {
                 dangerouslySetInnerHTML={{ __html: item.description }}
               />
 
-              <Link to={`/Edit/${item.id}`} className="btn btn__theme">
+              <Link to={`/blogEdit/${item._id}`} className="btn btn__theme">
                 {" "}
                 Edit{" "}
               </Link>

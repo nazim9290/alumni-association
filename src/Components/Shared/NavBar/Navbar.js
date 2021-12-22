@@ -135,7 +135,7 @@ function Navbar() {
             </Typography>
             <Box
               className="top-menu"
-              textAlign="center"
+              textalign="center"
               sx={{
                 flexGrow: "1",
                 mx: 10,
@@ -182,7 +182,7 @@ function Navbar() {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                      <Link to={`/${setting}`} textAlign="center">
+                      <Link to={`/${setting}`} textalign="center">
                         {setting}
                       </Link>
                     </MenuItem>
@@ -190,7 +190,7 @@ function Navbar() {
                   <Typography
                     sx={{ cursor: "pointer" }}
                     onClick={logout}
-                    textAlign="center"
+                    textalign="center"
                   >
                     Logout
                   </Typography>
