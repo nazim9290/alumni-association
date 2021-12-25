@@ -22,7 +22,13 @@ const Message = () => {
     <div style={massage}>
       <Container>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={12} md={6}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            data-aos="zoom-out-up"
+            data-aos-duration="1000"
+          >
             <Card sx={{ height: "100%" }}>
               <CardHeader title="সভাপতির বার্তা" subheader="" />
               <CardMedia
@@ -71,7 +77,13 @@ const Message = () => {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid
+            item
+            xs={12}
+            md={6}
+            data-aos="zoom-out-up"
+            data-aos-duration="1500"
+          >
             <Card sx={{ height: "100%" }}>
               <CardHeader title="সাধারন সম্পাদকের বার্তা" subheader="" />
               <CardMedia

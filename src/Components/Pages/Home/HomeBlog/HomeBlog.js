@@ -55,13 +55,13 @@ const HomeBlog = () => {
     navigate(`/Blog/${id}`);
   };
   return (
-    <div
+    <Box
       style={{
         backgroundImage:
           " linear-gradient(to right, #beccd4, #a9d6e4, #8ce0ec, #6debea, #54f4de)",
       }}
     >
-      <Container>
+      <Container maxWidth="xl">
         <Box
           sx={{
             width: "100%",
@@ -78,11 +78,19 @@ const HomeBlog = () => {
         <Grid
           container
           sx={{ py: 5 }}
-          spacing={{ xs: 1, md: 3 }}
+          spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
           {Array.from(Array(3)).map((_, index) => (
-            <Grid item xs={4} sm={4} md={4} key={index}>
+            <Grid
+              item
+              xs={4}
+              sm={4}
+              md={4}
+              key={index}
+              data-aos="zoom-in-down"
+              data-aos-duration="1000"
+            >
               <Card>
                 <CardMedia
                   component="img"
@@ -90,7 +98,7 @@ const HomeBlog = () => {
                   objectfit="cover"
                   objectposition="center"
                   height="25%"
-                  image="https://scontent.fkix2-2.fna.fbcdn.net/v/t39.30808-6/p526x296/260725833_2068174273330479_2675550629278720756_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=825194&_nc_eui2=AeEwZLAtikNJhqb_pu_IMr2QCxfJIMSWyrgLF8kgxJbKuP3_E3JL_mBny3c7nbYzXJQltF9cMzw6psYDJ7ivn-F7&_nc_ohc=Af2g4gaMjTQAX8RCd_i&_nc_ht=scontent.fkix2-2.fna&oh=00_AT9TaBoBxcafNuZLYjtnsIQtSZqx0cjGw4P2jk7552Pr6A&oe=61BF60AB"
+                  image="https://i.ibb.co/syvnGwG/260725833-2068174273330479-2675550629278720756-n.jpg"
                 />
                 <CardContent>
                   <Paper
@@ -186,7 +194,7 @@ const HomeBlog = () => {
         handleCloseComment={handleCloseComment}
         openComment={openComment}
       />
-    </div>
+    </Box>
   );
 };
 

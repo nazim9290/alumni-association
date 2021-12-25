@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../img/logo.png";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AddIcCallRoundedIcon from "@mui/icons-material/AddIcCallRounded";
 import "./Navbar.css";
@@ -119,6 +119,9 @@ function Navbar() {
                     <Link to={`/${page}`}>{page}</Link>
                   </MenuItem>
                 ))}
+                <Link onClick={handleCloseNavMenu} to="/becomeMember">
+                  Be Come a Member
+                </Link>
               </Menu>
             </Box>
 
@@ -182,9 +185,13 @@ function Navbar() {
                 >
                   {settings.map((setting) => (
                     <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                      <Link to={`/${setting}`} textalign="center">
+                      <NavLink
+                        onClick={handleCloseNavMenu}
+                        to={`/${setting}`}
+                        textalign="center"
+                      >
                         {setting}
-                      </Link>
+                      </NavLink>
                     </MenuItem>
                   ))}
                   <Typography

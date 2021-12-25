@@ -109,7 +109,7 @@ const Blog = () => {
                   alt="green iguana"
                   objectfit="cover"
                   objectposition="center"
-                  image="https://scontent.fkix2-2.fna.fbcdn.net/v/t39.30808-6/p526x296/260725833_2068174273330479_2675550629278720756_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=825194&_nc_eui2=AeEwZLAtikNJhqb_pu_IMr2QCxfJIMSWyrgLF8kgxJbKuP3_E3JL_mBny3c7nbYzXJQltF9cMzw6psYDJ7ivn-F7&_nc_ohc=Af2g4gaMjTQAX8RCd_i&_nc_ht=scontent.fkix2-2.fna&oh=00_AT9TaBoBxcafNuZLYjtnsIQtSZqx0cjGw4P2jk7552Pr6A&oe=61BF60AB"
+                  image="https://i.ibb.co/mH4ntN4/pnm2.jpg"
                 />
                 <CardContent>
                   <Paper

@@ -23,16 +23,25 @@ const Mission = () => {
   }, []);
   return (
     <Container sx={{ my: 10 }}>
-      <h1>Our Mission & Vision</h1>
+      <h1 data-aos="zoom-out-down" data-aos-duration="1000">
+        Our Mission & Vision
+      </h1>
       <Grid container spacing={2}>
         {mission.map((ms, i) => (
-          <Grid key={i} item xs={12} md={4}>
+          <Grid
+            key={i}
+            item
+            xs={12}
+            md={4}
+            data-aos="zoom-in-up"
+            data-aos-easing="linear"
+            data-aos-duration="1500"
+          >
             <Card sx={{ height: "100%" }}>
-              <CardActionArea>
+              <CardActionArea className="image-box">
                 <CardMedia
                   component="img"
                   height="140"
-                  className="image"
                   image={ms.img}
                   alt={ms.title}
                 />

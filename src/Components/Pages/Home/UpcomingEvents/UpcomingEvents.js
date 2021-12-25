@@ -12,14 +12,14 @@ const UpcomingEvents = () => {
         spacing={1}
         sx={{ boxShadow: 3, my: 5, p: 4, bgcolor: "#e0f2f1" }}
       >
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} data-aos="zoom-in" data-aos-duration="1000">
           <img
             src="https://sayidan.kenzap.com/wp-content/uploads/2016/07/galery-popup-14-4-569x331.jpg"
             alt=""
             width="100%"
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} data-aos="fade-left" data-aos-duration="1500">
           <Grid container>
             <Grid item xs={9} md={10}>
               <div className="event-title">
