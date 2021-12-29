@@ -1,26 +1,49 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "yup";
+import Schema from "./Schema";
 import "./Form.css";
+import UserForm from "./UserForm";
 
 const UserRegistration = () => {
   const [years, setYears] = useState([]);
-  const [imageSource, setImageSource] = useState("");
-
-  const onFileSelected = (event) => {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (e) => setImageSource(e.target.result);
-    }
-  };
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    var formData = new FormData();
+    formData.append("picture", data.picture[0]);
+    formData.append("fullName", data.fullName);
+    formData.append("phone", data.phone);
+    formData.append("email", data.email);
+    formData.append("gender", data.gender);
+    formData.append("examYear", data.examYear);
+    formData.append("city", data.city);
+    formData.append("country", data.country);
+    formData.append("facebookUrl", data.facebookUrl);
+    formData.append("status", data.status);
+    formData.append("place", data.place);
+    formData.append("blood", data.blood);
+
+    console.log("this is form data", formData);
+
+    axios
+      .post("http://localhost:5000/xStudent", data)
+      .then((res) => console.log(res))
+      .then((data) => {
+        if (data.insertedId) {
+          console.log("registration successfully");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   useEffect(() => {
     var yearList = [];
@@ -34,14 +57,8 @@ const UserRegistration = () => {
     <>
       <div className="member-form">
         <h1>Become A Member</h1>
-        {imageSource ? (
-          <img
-            alt="preview"
-            style={{ height: "100px", width: "100px" }}
-            src={imageSource}
-          />
-        ) : null}
-        <form onSubmit={handleSubmit(onSubmit)}>
+
+        <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
           <div className="container">
             <div>
               <label>Your Name</label>
@@ -56,26 +73,13 @@ const UserRegistration = () => {
                 </p>
               )}
             </div>
+
             <div>
-              <label>Upload Your Image</label>
+              <label>Upload your image</label>
               <input
+                {...register("picture", { required: true })}
                 type="file"
-                {...register("picture", {
-                  validate: {
-                    lessThan10MB: (files) =>
-                      files[0]?.size < 1024 * 1024 || "Max 1MB",
-                    acceptedFormats: (files) => {
-                      const pictureType = files[0]?.name
-                        .toLowerCase()
-                        .split(".")
-                        .pop();
-                      return (
-                        ["jpeg", "png", "gif"].includes(pictureType) ||
-                        "Only PNG, JPEG e GIF"
-                      );
-                    },
-                  },
-                })}
+                accept="image/*"
               />
             </div>
             <div>
@@ -91,7 +95,6 @@ const UserRegistration = () => {
                 </p>
               )}
             </div>
-
             <div>
               <label>Your Email</label>
               <input
@@ -104,7 +107,6 @@ const UserRegistration = () => {
                 </p>
               )}
             </div>
-
             <div>
               <label>Gender</label>
               <select {...register("gender")} placeholder="select gender">
@@ -114,7 +116,6 @@ const UserRegistration = () => {
                 <option value="other">other</option>
               </select>
             </div>
-
             <div>
               <label htmlFor="">Select Your Dakhil Exam Year</label>
               <select
@@ -141,18 +142,6 @@ const UserRegistration = () => {
               />
             </div>
             <div>
-              <label>
-                Which of the following is/are your preferred contact method(s)?*
-              </label>
-              <select {...register("contact")}>
-                <option defaultValue>select preferred Contact</option>
-                <option value="phone">Phone</option>
-                <option value="email">Email</option>
-                <option value="facebook">Facebook</option>
-                <option value="other">Do not wish to be contacted</option>
-              </select>
-            </div>
-            <div>
               <label>Facebook User URL</label>
               <input
                 {...register("facebookUrl", { required: true })}
@@ -169,13 +158,16 @@ const UserRegistration = () => {
                 <option value="other">Other</option>
               </select>
             </div>
-
+            <div>
+              <label>Company or Institute name</label>
+              <input {...register("place")} placeholder="e.g Dhaka College " />
+            </div>
             <div>
               <label>Blood Group</label>
               <input {...register("blood")} placeholder="e.g A+ " />
             </div>
           </div>
-          <input type="submit" />
+          <button>Submit</button>
         </form>
       </div>
     </>

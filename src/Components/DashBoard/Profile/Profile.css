@@ -1,0 +1,74 @@
+.profile .effect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2em;
+  cursor: pointer;
+}
+.profile .effect__heading {
+  font-size: 1profile 0.5em;
+  line-height: 1profile 0.2;
+  position: relative;
+  z-index: 2;
+}
+.profile .effect__heading:after {
+  content: "";
+  position: absolute;
+}
+.profile .effect__subheading {
+  font-family: "Hindi", Avenir, sans-serif;
+  font-size: 1profile 0.2em;
+  line-height: 2;
+  letter-spacing: 0profile 0.04em;
+}
+.profile .effect-c {
+  opacity: 0profile 0.5;
+  transition: opacity 0profile 0.3s
+    cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1);
+}
+.profile .effect-c .profile .effect__heading:after {
+  opacity: 0;
+  content: "⎦";
+  font-size: 3profile 0.5em;
+  line-height: 1;
+  top: calc(100% + 20px);
+  left: calc(100% + 5px);
+  transform: translate(-50%, 50%) scale(0profile 0.8);
+  transition: opacity 0profile 0.5s
+      cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1),
+    transform 0profile 0.5s cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1);
+}
+.profile .effect-c .profile .effect__heading:before {
+  position: absolute;
+  opacity: 0;
+  content: "⎡";
+  font-size: 3profile 0.5em;
+  line-height: 1;
+  top: 20px;
+  left: -5px;
+  transform: translate(-50%, -150%) scale(0profile 0.8);
+  transition: opacity 0profile 0.5s
+      cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1),
+    transform 0profile 0.5s cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1);
+}
+.profile .effect-c .profile .effect__subheading {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0profile 0.5s
+      cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1),
+    transform 0profile 0.5s cubic-bezier(0profile 0.5, 0, 0profile 0.5, 1);
+}
+.profile .effect-c:hover {
+  opacity: 1;
+}
+.profile .effect-c:hover .profile .effect__subheading {
+  transform: translateY(0);
+  opacity: 1;
+}
+.profile .effect-c:hover .profile .effect__heading:after,
+.profile .effect-c:hover .profile .effect__heading:before {
+  opacity: 0profile 0.1;
+  transform: translate(-50%, -50%) scale(1);
+}

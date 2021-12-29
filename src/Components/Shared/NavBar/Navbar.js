@@ -18,7 +18,7 @@ import "./Navbar.css";
 import useAuth from "./../../Hooks/useAuth";
 
 const pages = ["Home", "About", "Events", "Committee", "Blog", "Member"];
-const settings = ["Profile", "Account", "Dashboard"];
+const settings = ["Dashboard"];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -41,7 +41,7 @@ function Navbar() {
     setAnchorElUser(null);
   };
   return (
-    <div>
+    <div className="navbar">
       <div className="title-name">
         <Box
           sx={{
@@ -184,27 +184,27 @@ function Navbar() {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                      <NavLink
-                        onClick={handleCloseNavMenu}
-                        to={`/${setting}`}
-                        textalign="center"
-                      >
+                    <MenuItem
+                      className="menu-item"
+                      key={setting}
+                      onClick={handleCloseNavMenu}
+                    >
+                      <NavLink to={`/${setting}`} textalign="center">
                         {setting}
                       </NavLink>
                     </MenuItem>
                   ))}
                   <Typography
-                    sx={{ cursor: "pointer" }}
+                    className="menu-item"
+                    sx={{ cursor: "pointer", textAlign: "center" }}
                     onClick={logout}
-                    textalign="center"
                   >
                     Logout
                   </Typography>
                 </Menu>
               </Box>
             ) : (
-              <Link to="/login">Login</Link>
+              <NavLink to="/login">Login</NavLink>
             )}
           </Toolbar>
         </Container>

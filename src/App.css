@@ -6,7 +6,9 @@
 * {
   font-family: "Hind Siliguri", "Noto Sans Bengali", sans-serif;
 }
-
+a {
+  text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

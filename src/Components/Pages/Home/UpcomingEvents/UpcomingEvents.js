@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import "./Upcoming.css";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
+import Countdown from "../../../Shared/Countdwon/Countdwon";
 
 const UpcomingEvents = () => {
   return (
@@ -19,7 +20,13 @@ const UpcomingEvents = () => {
             width="100%"
           />
         </Grid>
-        <Grid item xs={12} md={6} data-aos="fade-left" data-aos-duration="1500">
+        <Grid
+          item
+          xs={12}
+          md={6}
+          data-aos="zoom-out-up"
+          data-aos-duration="1500"
+        >
           <Grid container>
             <Grid item xs={9} md={10}>
               <div className="event-title">
@@ -38,35 +45,7 @@ const UpcomingEvents = () => {
             {/*  */}
             <Grid container>
               <Grid item xs={9} md={8}>
-                <div className="timer">
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Days</small>
-                    </p>
-                  </section>
-                  <span>:</span>
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Hours</small>
-                    </p>
-                  </section>
-                  <span>:</span>
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Minute</small>
-                    </p>
-                  </section>
-                  <span>:</span>
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Seconds</small>
-                    </p>
-                  </section>
-                </div>
+                <Countdown />
               </Grid>
               <Grid item xs={3} md={4}>
                 <Button

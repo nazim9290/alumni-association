@@ -35,6 +35,7 @@ textarea {
   line-height: inherit;
 }
 .blogs label {
+  text-align: start;
   padding: 0;
   font-size: 17px;
   color: #202124;
@@ -101,7 +102,7 @@ span.required {
 form.update__forms {
   border: 1px solid #1967d2;
   box-shadow: 0 6px 15px 0 rgb(64 79 104 / 5%);
-  padding: 37px;
+  padding: 50px;
 }
 .errors {
   color: #f44336;

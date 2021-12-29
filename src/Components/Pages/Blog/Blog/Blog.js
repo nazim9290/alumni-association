@@ -109,7 +109,11 @@ const Blog = () => {
                   alt="green iguana"
                   objectfit="cover"
                   objectposition="center"
-                  image="https://i.ibb.co/mH4ntN4/pnm2.jpg"
+                  image={
+                    post.img
+                      ? `${post.img}`
+                      : "https://i.ibb.co/mH4ntN4/pnm2.jpg"
+                  }
                 />
                 <CardContent>
                   <Paper
@@ -130,6 +134,7 @@ const Blog = () => {
                     {post.title}
                   </Typography>
                   <Typography
+                    sx={{ height: "150px" }}
                     className="post-description"
                     variant="body2"
                     color="text.secondary"
@@ -142,7 +147,15 @@ const Blog = () => {
                         __html: post?.description?.slice(0, 200),
                       }}
                     /> */}
-                    <Link to="">...learn more</Link>
+                    <br />
+                    <Button
+                      onClick={() => {
+                        handleBlogDetails(post._id);
+                      }}
+                      size="medium"
+                    >
+                      See More
+                    </Button>
                   </Typography>
 
                   <Stack direction="row" alignItems="center" gap={1}>
@@ -157,43 +170,31 @@ const Blog = () => {
                     </Box>
                   </Stack>
                 </CardContent>
-                <CardActions>
-                  <IconButton aria-label="add to favorites">
-                    <StyledBadge badgeContent={0} color="secondary">
-                      <FavoriteIcon />
-                    </StyledBadge>
-                  </IconButton>
 
-                  <IconButton
-                    onClick={handleClickOpenComment}
-                    aria-label="InsertCommentIcon"
-                  >
-                    <StyledBadge badgeContent={0} color="secondary">
-                      <InsertCommentIcon />
-                    </StyledBadge>
-                  </IconButton>
-                  <IconButton aria-label="RemoveRedEyeIcon">
-                    <StyledBadge
-                      badgeContent={0}
-                      color="secondary"
-                    ></StyledBadge>
+                <IconButton aria-label="add to favorites">
+                  <StyledBadge badgeContent={0} color="secondary">
+                    <FavoriteIcon />
+                  </StyledBadge>
+                </IconButton>
 
-                    <RemoveRedEyeIcon />
-                  </IconButton>
-                  <IconButton onClick={handleClickOpen} aria-label="share">
-                    <StyledBadge badgeContent={0} color="secondary">
-                      <ShareIcon />
-                    </StyledBadge>
-                  </IconButton>
-                  <Button
-                    onClick={() => {
-                      handleBlogDetails(post._id);
-                    }}
-                    size="large"
-                  >
-                    See More
-                  </Button>
-                </CardActions>
+                <IconButton
+                  onClick={handleClickOpenComment}
+                  aria-label="InsertCommentIcon"
+                >
+                  <StyledBadge badgeContent={0} color="secondary">
+                    <InsertCommentIcon />
+                  </StyledBadge>
+                </IconButton>
+                <IconButton aria-label="RemoveRedEyeIcon">
+                  <StyledBadge badgeContent={0} color="secondary"></StyledBadge>
+
+                  <RemoveRedEyeIcon />
+                </IconButton>
+                <IconButton onClick={handleClickOpen} aria-label="share">
+                  <StyledBadge badgeContent={0} color="secondary">
+                    <ShareIcon />
+                  </StyledBadge>
+                </IconButton>
               </Card>
             </Grid>
           ))}

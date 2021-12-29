@@ -49,6 +49,7 @@ function BlogsAdd() {
           title: userInfo.title,
           description: userInfo.description.value,
           category: userInfo.category,
+          categoryColor:"",
           writer: {
             email: user.email,
             name: user.displayName,
@@ -67,16 +68,16 @@ function BlogsAdd() {
   };
   return (
     <Container sx={{ my: 5 }} className="blogs">
-      <div className="App">
-        <div className="container">
+      <div className="">
+        <div className="">
           <div className="row">
             <form onSubmit={addDetails} className="update__forms">
-              <h3 className="myaccount-content"> Add </h3>
+              <h1 className="myaccount-content"> Add Your Content </h1>
               <div className="form-row">
                 <div className="form-group col-md-12">
                   <label className="font-weight-bold">
                     {" "}
-                    Title <span className="required"> * </span>{" "}
+                    Content Title <span className="required"> * </span>{" "}
                   </label>
                   <input
                     type="text"

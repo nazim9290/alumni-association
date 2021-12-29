@@ -11,6 +11,7 @@ import {
   getIdToken,
   signOut,
 } from "firebase/auth";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 
 // initialize firebase app
 InitializeFirebase();
@@ -23,6 +24,7 @@ const useFirebase = () => {
   const [token, setToken] = useState("");
 
   const auth = getAuth();
+  const storage = getStorage();
   const googleProvider = new GoogleAuthProvider();
 
   const registerUser = (email, password, name, navigate) => {
@@ -123,6 +125,21 @@ const useFirebase = () => {
       body: JSON.stringify(user),
     }).then();
   };
+
+  // // Storage
+  // const upload = async (file, user, setLoading) => {
+  //   const fileRef = ref(storage, user.uid + ".png");
+
+  //   setLoading(true);
+
+  //   const snapshot = await uploadBytes(fileRef, file);
+  //   const photoURL = await getDownloadURL(fileRef);
+
+  //   updateProfile(user, { photoURL });
+
+  //   setLoading(false);
+  //   alert("Uploaded file!");
+  // };
 
   return {
     user,

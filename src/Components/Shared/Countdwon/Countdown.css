@@ -1,0 +1,30 @@
+.countdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown .timer-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.countdown .timer {
+  font-size: 46px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown .timer span {
+  font-size: 16px;
+  color: #444;
+}
+
+.countdown .semicolon {
+  font-size: 36px;
+}

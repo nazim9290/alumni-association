@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import sanitizeHtml from "sanitize-html";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -77,7 +78,11 @@ const BlogDetails = () => {
               color="text.secondary"
               className="blog-description"
               dangerouslySetInnerHTML={{
-                __html: blogDescription?.description?.slice(0, 200),
+                __html: sanitizeHtml(blogDescription?.description, {
+                  allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+                    "img",
+                  ]),
+                }),
               }}
             ></Typography>
 
