@@ -21,12 +21,20 @@ import Edit from "./Components/DashBoard/BlogsCrete/Edit";
 import Dashboard from "./Components/DashBoard/Dashboard/Dashboard";
 import BlogsAdd from "./Components/DashBoard/BlogsCrete/BlogsAdd";
 import MakeAdmin from "./Components/DashBoard/MakeAdmin/MakeAdmin";
+import { Helmet } from "react-helmet";
 
 function App() {
   return (
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>
+              হাজী মাদবর আলী হাচানিয়া দাখিল মাদ্রাসা প্রাক্তন ছাত্র ছাত্রী পরিষদ
+            </title>
+            <link rel="canonical" href="http://mysite.com/example" />
+          </Helmet>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

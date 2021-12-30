@@ -5,6 +5,7 @@ import moment from "moment";
 import "./Countdown.css";
 
 function Countdown() {
+  const [years, setYears] = useState(0);
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -16,6 +17,7 @@ function Countdown() {
       const now = moment();
       const then = moment("2023-01-07 08:00:00", "YYYY-MM-DD hh:mm:ss");
       const countdown = moment(then - now);
+      setYears(countdown.format("y"));
       setDays(countdown.format("D"));
       setHours(countdown.format("HH"));
       setMinutes(countdown.format("mm"));

@@ -4,7 +4,7 @@ import "swiper/swiper.min.css";
 import "swiper/modules/pagination/pagination.min.css";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import "./Advisor.css";
-// import Swiper core and required modules
+
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";

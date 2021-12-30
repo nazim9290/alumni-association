@@ -1,0 +1,16 @@
+.blog-description {
+  text-align: justify;
+  font-family: "Noto Serif Bengali", sans-serif;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.blog-description img {
+  display: block;
+  margin: 10px auto;
+}
+.blog-description p {
+  font-size: 1rem;
+}
+.blog-description a {
+  color: blue;
+}

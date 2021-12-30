@@ -43,9 +43,11 @@ const UpcomingEvents = () => {
             </Grid>
 
             {/*  */}
-            <Grid container>
+            <Grid container sx={{ my: 2 }}>
               <Grid item xs={9} md={8}>
-                <Countdown />
+                <Box>
+                  <Countdown />
+                </Box>
               </Grid>
               <Grid item xs={3} md={4}>
                 <Button

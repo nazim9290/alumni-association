@@ -1,14 +1,14 @@
 import React from "react";
 import PunormiloniCommittee from "../CommitteeOfPunorMiloni/PunormiloniCommittee";
 import AboutHasania from "./AboutHasania";
+import { Box, Typography } from "@mui/material";
 
 const About = () => {
   return (
-    <div>
-      <h4>About</h4>
+    <Box>
       <AboutHasania />
       <PunormiloniCommittee />
-    </div>
+    </Box>
   );
 };
 

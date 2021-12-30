@@ -21,7 +21,9 @@ import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
 import LinkShare from "./../Home/HomeBlog/LinkShare";
+import { Helmet } from "react-helmet";
 import BlogComment from "./BlogComment";
+import "./BlogDetails.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -37,6 +39,8 @@ const BlogDetails = () => {
   const { blogId } = useParams();
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
+
+  const url = window.location.href;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -60,6 +64,11 @@ const BlogDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{"hello"}</title>
+        <link rel="canonical" href={url} />
+      </Helmet>
       <Container sx={{ my: 5 }}>
         <Card>
           <CardMedia
@@ -75,7 +84,6 @@ const BlogDetails = () => {
             <Typography
               sx={{ mb: 1 }}
               variant="body2"
-              color="text.secondary"
               className="blog-description"
               dangerouslySetInnerHTML={{
                 __html: sanitizeHtml(blogDescription?.description, {

@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import useAuth from "./../../Hooks/useAuth";
 import Avatar from "@mui/material/Avatar";
 import "./Login.css";
+import LoginIcon from "./LoginIcon/LoginIcon";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -77,24 +78,7 @@ const Login = () => {
         <Box sx={{ mb: 3 }}>
           <Link to="/registration">New User? click hare</Link>
         </Box>
-        <Stack
-          direction={{ xs: "column", sm: "row" }}
-          spacing={{ xs: 1, sm: 1, md: 2 }}
-          sx={{ justifyContent: "center" }}
-        >
-          <Button variant="contained" onClick={handleGoogleSignIn}>
-            <Avatar src="https://i.ibb.co/JjDZnYF/download.png" />
-            <Typography component="p" variant="p" color="white">
-              Sign in with Google
-            </Typography>
-          </Button>
-          <Button variant="contained" onClick={handleGoogleSignIn}>
-            <Avatar src="https://i.ibb.co/WKXD8js/facebook.png" />
-            <Typography component="p" variant="p" color="white">
-              Sign in with facebook
-            </Typography>
-          </Button>
-        </Stack>
+        <LoginIcon />
       </Paper>
     </section>
   );

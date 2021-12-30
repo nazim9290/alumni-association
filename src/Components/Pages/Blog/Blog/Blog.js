@@ -24,6 +24,7 @@ import LinkShare from "./../../Home/HomeBlog/LinkShare";
 import BlogComment from "./../../BlogDetails/BlogComment";
 import axios from "axios";
 import Regex from "./Regex";
+import useAuth from "./../../../Hooks/useAuth";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -38,23 +39,7 @@ const Blog = () => {
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
   const navigate = useNavigate();
-  const [ispost, setpost] = useState([]);
-  useEffect(() => {
-    axios
-      .get("https://calm-escarpment-64359.herokuapp.com/blog")
-      .then(function (response) {
-        // handle success
-        setpost(response.data);
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  }, []);
+  const { posts } = useAuth();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -100,7 +85,7 @@ const Blog = () => {
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {ispost.map((post, index) => (
+          {posts.map((post, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <Card sx={{ height: "100%" }}>
                 <CardMedia

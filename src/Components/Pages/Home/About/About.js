@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import React from "react";
+import { Link } from "react-router-dom";
 import "./About.css";
 
 const About = () => {
@@ -27,7 +28,7 @@ const About = () => {
             ছাত্র-ছাত্রী দেশের বিভিন্ন সেক্টরে সফলতা ও কৃতিত্বের সাথে কাজ করছেন…
           </p>
           <Button size="large" variant="contained">
-            More About Us
+            <Link to="/About">More About Us</Link>
           </Button>
         </Container>
       </Box>

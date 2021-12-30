@@ -12,11 +12,13 @@ import {
   signOut,
 } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import axios from "axios";
 
 // initialize firebase app
 InitializeFirebase();
 
 const useFirebase = () => {
+  const [posts, setposts] = useState([]);
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState("");
@@ -141,6 +143,23 @@ const useFirebase = () => {
   //   alert("Uploaded file!");
   // };
 
+  useEffect(() => {
+    axios
+      .get("https://calm-escarpment-64359.herokuapp.com/blog")
+      .then(function (response) {
+        // handle success
+        setposts(response.data);
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }, []);
+
   return {
     user,
     admin,
@@ -151,6 +170,7 @@ const useFirebase = () => {
     loginUser,
     signInWithGoogle,
     logout,
+    posts,
   };
 };
 

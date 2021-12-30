@@ -11,10 +11,13 @@ import categorys from "./useCategory";
 import useAuth from "./../../Hooks/useAuth";
 import { Container } from "@mui/material";
 import uploadImageCallBack from "./ImageHandle";
+import Swal from "sweetalert2";
+import Config from "./Config";
 
 function BlogsAdd() {
   const { user } = useAuth();
-  let naviagate = useNavigate();
+  const [success, setSuccess] = useState(false);
+  let navigate = useNavigate();
   const [userInfo, setuserInfo] = useState({
     title: "",
     category: "",
@@ -49,7 +52,7 @@ function BlogsAdd() {
           title: userInfo.title,
           description: userInfo.description.value,
           category: userInfo.category,
-          categoryColor:"",
+          categoryColor: "",
           writer: {
             email: user.email,
             name: user.displayName,
@@ -58,8 +61,17 @@ function BlogsAdd() {
           date: nowDate,
         })
         .then((res) => {
-          if (res.data.success === true) {
-            naviagate("/");
+          if (res.data.insertedId) {
+            setSuccess(
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your Post has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+              }),
+              navigate("/home")
+            );
           }
         });
     } catch (error) {
@@ -67,91 +79,80 @@ function BlogsAdd() {
     }
   };
   return (
-    <Container sx={{ my: 5 }} className="blogs">
-      <div className="">
-        <div className="">
-          <div className="row">
-            <form onSubmit={addDetails} className="update__forms">
-              <h1 className="myaccount-content"> Add Your Content </h1>
-              <div className="form-row">
-                <div className="form-group col-md-12">
-                  <label className="font-weight-bold">
-                    {" "}
-                    Content Title <span className="required"> * </span>{" "}
-                  </label>
-                  <input
-                    type="text"
-                    name="title"
-                    value={userInfo.title}
-                    onChange={onChangeValue}
-                    className="form-control"
-                    placeholder="Title"
-                    required
-                  />
-                </div>
-                <div className="form-group col-md-12">
-                  <label className="font-weight-bold">
-                    {" "}
-                    Category <span className="required"> * </span>{" "}
-                  </label>
-                  <select
-                    type="text"
-                    name="category"
-                    value={userInfo.category}
-                    onChange={onChangeValue}
-                    className="form-control"
-                    placeholder="category"
-                    required
-                  >
-                    <option defaultValue="">
-                      --Please choose a Category--
-                    </option>
-                    {categorys.map((category, i) => (
-                      <option key={i} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="form-group col-md-12 editor">
-                  <label className="font-weight-bold">
-                    {" "}
-                    Description <span className="required"> * </span>{" "}
-                  </label>
-                  <Editor
-                    editorState={description}
-                    toolbarClassName="toolbarClassName"
-                    wrapperClassName="wrapperClassName"
-                    editorClassName="editorClassName"
-                    onEditorStateChange={onEditorStateChange}
-                    toolbar={{
-                      image: {
-                        uploadCallback: uploadImageCallBack,
-                        alt: { present: true, mandatory: false },
-                      },
-                    }}
-                  />
-                  <textarea
-                    style={{ display: "none" }}
-                    disabled
-                    ref={(val) => (userInfo.description = val)}
-                    value={draftToHtml(
-                      convertToRaw(description.getCurrentContent())
-                    )}
-                  />
-                </div>
-                {isError !== null && <div className="errors"> {isError} </div>}
-                <div className="form-group col-sm-12 text-right">
-                  <button type="submit" className="btn btn__theme">
-                    {" "}
-                    Submit{" "}
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
+    <Container sx={{ my: 1 }} className="blogs">
+      <form onSubmit={addDetails} className="update__forms">
+        <h1 className="myaccount-content"> Add Your Content </h1>
+        <div className="form-row">
+          <label className="font-weight-bold">
+            {" "}
+            Content Title <span className="required"> * </span>{" "}
+          </label>
+          <input
+            type="text"
+            name="title"
+            value={userInfo.title}
+            onChange={onChangeValue}
+            className="form-control"
+            placeholder="Title"
+            required
+          />
         </div>
-      </div>
+        <div className="form-group col-md-12">
+          <label className="font-weight-bold">
+            {" "}
+            Category <span className="required"> * </span>{" "}
+          </label>
+          <select
+            type="text"
+            name="category"
+            value={userInfo.category}
+            onChange={onChangeValue}
+            className="form-control"
+            placeholder="category"
+            required
+          >
+            <option defaultValue="">--Please choose a Category--</option>
+            {categorys.map((category, i) => (
+              <option key={i} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="form-group col-md-12 editor">
+          <label className="font-weight-bold">
+            {" "}
+            Description <span className="required"> * </span>{" "}
+          </label>
+          <Editor
+            {...Config}
+            editorState={description}
+            toolbarClassName="toolbarClassName"
+            wrapperClassName="wrapperClassName"
+            editorClassName="editorClassName"
+            onEditorStateChange={onEditorStateChange}
+            toolbar={{
+              image: {
+                uploadCallback: uploadImageCallBack,
+                alt: { present: true, mandatory: false },
+              },
+            }}
+          />
+          <textarea
+            style={{ display: "none" }}
+            disabled
+            ref={(val) => (userInfo.description = val)}
+            value={draftToHtml(convertToRaw(description.getCurrentContent()))}
+          />
+        </div>
+        {isError !== null && <div className="errors"> {isError} </div>}
+        <div className="form-group col-sm-12 text-right">
+          <button type="submit" className="btn btn__theme">
+            {" "}
+            Submit{" "}
+          </button>
+        </div>
+      </form>
     </Container>
   );
 }

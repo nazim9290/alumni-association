@@ -5,7 +5,7 @@ import React from "react";
 const AboutHasania = () => {
   return (
     <div>
-      <Container>
+      <Container sx={{ my: 5 }}>
         <hr />
         <Box component="h2">About of Hasania Alumni Association</Box>
         <hr />

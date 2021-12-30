@@ -21,6 +21,9 @@ import { styled } from "@mui/material/styles";
 import LinkShare from "./LinkShare";
 import { useNavigate } from "react-router-dom";
 import BlogComment from "./../../BlogDetails/BlogComment";
+import useAuth from "./../../../Hooks/useAuth";
+import Regex from "./../../Blog/Blog/Regex";
+import "./Blog.css";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -32,6 +35,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 const HomeBlog = () => {
+  const { posts } = useAuth();
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
   let navigate = useNavigate();
@@ -81,7 +85,7 @@ const HomeBlog = () => {
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {Array.from(Array(3)).map((_, index) => (
+          {posts.slice(-3).map((post, index) => (
             <Grid
               item
               xs={4}
@@ -91,62 +95,65 @@ const HomeBlog = () => {
               data-aos="zoom-in-down"
               data-aos-duration="1000"
             >
-              <Card>
-                <CardMedia
-                  component="img"
-                  alt="green iguana"
-                  objectfit="cover"
-                  objectposition="center"
-                  height="25%"
-                  image="https://i.ibb.co/syvnGwG/260725833-2068174273330479-2675550629278720756-n.jpg"
-                />
-                <CardContent>
-                  <Paper
-                    elevation={3}
-                    sx={{
-                      p: 1,
-                      width: "50%",
-                      bgcolor: "#8e44ad",
-                      color: "#f8f8f8",
-                      position: "relative",
-                      top: "-50px",
-                      left: "50%",
+              <Card sx={{ height: "100%" }}>
+                <Box
+                  onClick={() => {
+                    handleBlogDetails(post._id);
+                  }}
+                >
+                  <CardMedia
+                    style={{
+                      backgroundImage: `url("https://i.ibb.co/syvnGwG/260725833-2068174273330479-2675550629278720756-n.jpg")`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "300px",
                     }}
-                  >
-                    Technology
-                  </Paper>
-                  <Typography gutterBottom variant="h5" component="div">
-                    বিষাদের সুরে প্রিয় শিক্ষকের বিদায় সংবর্ধনা
-                  </Typography>
-                  <Typography
-                    sx={{ mb: 1 }}
-                    variant="body2"
-                    color="text.secondary"
-                  >
-                    মো: গোলাম মোস্তাফা। রাজধানীর ভাটারা থানার খিলবাড়ী টেক এলাকার
-                    হাজী মাদবর আলী হাচানিয়া দাখিল মাদরাসায় শিক্ষকতা করছেন প্রায়
-                    ২৬ বছর। মাদ্রাসাটির সহকারি সুপারিনটেনডেন্টের দায়িত্বে থাকা
-                    এই শিক্ষক সম্প্রতি রাজধানীর খিলক্ষেত ইসলামিয়া দাখিল
-                    মাদ্রাসায় সুপারিনটেনডেন্ট হিসেবে নিয়োগ পেয়েছেন। তবে বিষয়টি
-                    আনন্দের হলেও বিষাদের ছায়া নেমেছে হাজী মাদবর আলী হাচানিয়া
-                    দাখিল মাদরাসায়। প্রিয় শিক্ষকের বিদায়ে অশ্রুসিক্ত দীর্ঘ সময়ের
-                    সহকর্মী, সাবেক ও বর্তমান শিক্ষার্থী এবং শিক্ষাপ্রতিষ্ঠান
-                    সংশ্লিষ্টরা।
-                  </Typography>
+                  />
+                  <CardContent>
+                    <Paper elevation={3} className="post-category">
+                      {post.category}
+                    </Paper>
+                    <Typography
+                      className="post-title"
+                      gutterBottom
+                      variant="h6"
+                      component="div"
+                    >
+                      {post.title}
+                    </Typography>
+                    <Typography className="post-description" variant="body2">
+                      {Regex(post?.description)}
 
-                  <Stack direction="row" alignItems="center" gap={1}>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="/static/images/avatar/1.jpg"
-                    />
-                    <Box sx={{ textalign: "left" }}>
-                      <Typography variant="body1">Nazim</Typography>
-                      <Typography color="text.secondary">
-                        22 september 2000
+                      <Typography
+                        component="span"
+                        color="blue"
+                        sx={{ cursor: "pointer" }}
+                        onClick={() => {
+                          handleBlogDetails(post._id);
+                        }}
+                        size="medium"
+                      >
+                        ...See More
                       </Typography>
-                    </Box>
-                  </Stack>
-                </CardContent>
+                    </Typography>
+
+                    <Stack direction="row" alignItems="start" gap={1}>
+                      <Avatar
+                        alt={post?.writer?.name}
+                        src={post?.writer?.img}
+                      />
+                      <Box sx={{ textalign: "left" }}>
+                        <Typography variant="body1">
+                          {post?.writer?.name}
+                        </Typography>
+                        <Typography color="text.secondary">
+                          {post.date}
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </CardContent>
+                </Box>
                 <CardActions>
                   <IconButton aria-label="add to favorites">
                     <StyledBadge badgeContent={0} color="secondary">
@@ -175,14 +182,6 @@ const HomeBlog = () => {
                       <ShareIcon />
                     </StyledBadge>
                   </IconButton>
-                  <Button
-                    onClick={() => {
-                      handleBlogDetails(index);
-                    }}
-                    size="large"
-                  >
-                    See More
-                  </Button>
                 </CardActions>
               </Card>
             </Grid>

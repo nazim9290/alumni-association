@@ -1,0 +1,14 @@
+.post-title {
+  color: rgb(15, 157, 240);
+}
+.post-category {
+  padding: 5px;
+  width: 50%;
+  color: #f8f8f8;
+  position: relative;
+  top: -50px;
+  left: 50%;
+}
+.post-description {
+  height: 150px;
+}
