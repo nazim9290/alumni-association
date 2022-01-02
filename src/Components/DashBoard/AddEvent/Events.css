@@ -1,30 +1,19 @@
-.rdw-editor-main {
-  background-color: #f5f6f9;
-  border: 1px solid#eee;
-  margin-bottom: 17px;
-  line-height: 27px;
+label {
+  text-align: start;
 }
-.public-DraftEditor-content {
-  min-height: 300px;
-}
-.rdw-dropdown-optionwrapper {
-  width: 100% !important;
-}
-
-select,
-textarea,
-input[type="text"] {
-  margin: 10px 0 !important;
+input[type="date"],
+input[type="time"] {
+  margin: 5px !important;
   border-radius: 8px;
   border: 1px solid #f0f5f7;
   padding: 5px 0;
   font-size: 15px;
   background: #f0f5f7;
-  width: 100% !important;
+  width: 500px !important;
   color: #696969;
   transition: all 0.3s ease-in-out 0s;
   box-shadow: none;
-  height: 60px;
+  height: 40px;
 }
 
 .blogs input,
@@ -37,7 +26,7 @@ textarea {
 }
 .blogs label {
   text-align: start;
-  padding: 5px;
+  padding: 0;
   font-size: 17px;
   color: #202124;
   font-weight: 500;
@@ -81,18 +70,4 @@ form.update__forms {
   border: 1px solid #1967d2;
   box-shadow: 0 6px 15px 0 rgb(64 79 104 / 5%);
   padding: 20px;
-}
-.errors {
-  color: #f44336;
-  font-size: 17px;
-  font-weight: 600;
-  margin-bottom: 17px;
-}
-
-@media only screen and (max-width: 600px) {
-  form.update__forms {
-    border: none;
-    box-shadow: none;
-    padding: 5px;
-  }
 }

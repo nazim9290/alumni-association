@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import { yupResolver } from "yup";
-import Schema from "./Schema";
 import "./Form.css";
-import UserForm from "./UserForm";
+
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -16,13 +16,11 @@ import InsertCommentIcon from "@mui/icons-material/InsertComment";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
-import LinkShare from "./LinkShare";
 import { useNavigate } from "react-router-dom";
-import BlogComment from "../../BlogDetails/BlogComment";
 import useAuth from "./../../../Hooks/useAuth";
-
-import "./Blog.css";
 import Regex from "./../../../Shared/Regex/Regex";
+import BlogComment from "./../../BlogDetails/BlogComment";
+import LinkShare from "./../../Home/HomeBlog/LinkShare";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -33,7 +31,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const HomeBlog = () => {
+const Blog = () => {
   const { posts } = useAuth();
   const [open, setOpen] = React.useState(false);
   const [openComment, setOpenComment] = React.useState(false);
@@ -76,7 +74,6 @@ const HomeBlog = () => {
           <Box component="h1" sx={{ flexGrow: 1, color: "#fff" }}>
             Blog And News on Campus
           </Box>
-          <Box>See All</Box>
         </Box>
         <Grid
           container
@@ -84,13 +81,13 @@ const HomeBlog = () => {
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {posts.slice(-3).map((post, index) => (
+          {posts.map((post, index) => (
             <Grid
+              key={index}
               item
               xs={4}
               sm={4}
               md={4}
-              key={index}
               data-aos="zoom-in-down"
               data-aos-duration="1000"
             >
@@ -100,7 +97,7 @@ const HomeBlog = () => {
                     handleBlogDetails(post._id);
                   }}
                 >
-                  <CardMedia
+                  <div
                     style={{
                       backgroundImage: `url("https://i.ibb.co/syvnGwG/260725833-2068174273330479-2675550629278720756-n.jpg")`,
                       backgroundRepeat: "no-repeat",
@@ -202,4 +199,4 @@ const HomeBlog = () => {
   );
 };
 
-export default HomeBlog;
+export default Blog;

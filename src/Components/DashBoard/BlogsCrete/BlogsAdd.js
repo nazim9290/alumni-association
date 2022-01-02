@@ -9,29 +9,11 @@ import "./Blogs.css";
 import NowDate from "./NowDate";
 import categorys from "./useCategory";
 import useAuth from "./../../Hooks/useAuth";
-import { Container } from "@mui/material";
-import uploadImageCallBack from "./ImageHandle";
+import { Box } from "@mui/material";
 import Swal from "sweetalert2";
 import Config from "./Config";
 
 function BlogsAdd() {
-  const { user } = useAuth();
-  const [success, setSuccess] = useState(false);
-  let navigate = useNavigate();
-  const [userInfo, setuserInfo] = useState({
-    title: "",
-    category: "",
-  });
-  const nowDate = NowDate();
-  // console.log(nowDate);
-  // console.log(user);
-  const onChangeValue = (e) => {
-    setuserInfo({
-      ...userInfo,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   let editorState = EditorState.createEmpty();
   const [description, setDescription] = useState(editorState);
   const onEditorStateChange = (editorState) => {
@@ -39,6 +21,39 @@ function BlogsAdd() {
   };
 
   const [isError, setError] = useState(null);
+  const { user } = useAuth();
+  const [url, setUrl] = useState("");
+  let navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({
+    title: "",
+    category: "",
+  });
+  const [success, setSuccess] = useState(false);
+  const onChangeValue = (e) => {
+    setUserInfo({
+      ...userInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const nowDate = NowDate();
+
+  const processFile = (e) => {
+    var image = e.target.files[0];
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "Image_Blog");
+    data.append("cloud_name", "dpakfnqvn");
+    fetch("https://api.cloudinary.com/v1_1/dpakfnqvn/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setUrl(data.url);
+      })
+      .catch((err) => console.log(err));
+  };
+
   const addDetails = async (event) => {
     try {
       event.preventDefault();
@@ -53,6 +68,7 @@ function BlogsAdd() {
           description: userInfo.description.value,
           category: userInfo.category,
           categoryColor: "",
+          img: url,
           writer: {
             email: user.email,
             name: user.displayName,
@@ -69,9 +85,9 @@ function BlogsAdd() {
                 title: "Your Post has been saved",
                 showConfirmButton: false,
                 timer: 1500,
-              }),
-              navigate("/home")
+              })
             );
+            navigate("/home");
           }
         });
     } catch (error) {
@@ -79,7 +95,7 @@ function BlogsAdd() {
     }
   };
   return (
-    <Container sx={{ my: 1 }} className="blogs">
+    <Box className="blogs">
       <form onSubmit={addDetails} className="update__forms">
         <h1 className="myaccount-content"> Add Your Content </h1>
         <div className="form-row">
@@ -97,8 +113,24 @@ function BlogsAdd() {
             required
           />
         </div>
-        <div className="form-group col-md-12">
+        <div className="form-row">
           <label className="font-weight-bold">
+            {" "}
+            Blogs Title Image <span className="required">
+              {" "}
+              (if you want){" "}
+            </span>{" "}
+          </label>
+          <input
+            type="file"
+            name="image"
+            onChange={processFile}
+            className="form-control"
+            placeholder="Title image"
+          />
+        </div>
+        <div className="form-group">
+          <label>
             {" "}
             Category <span className="required"> * </span>{" "}
           </label>
@@ -114,30 +146,34 @@ function BlogsAdd() {
             <option defaultValue="">--Please choose a Category--</option>
             {categorys.map((category, i) => (
               <option key={i} value={category}>
-                {category}
+                {category[0]}
               </option>
             ))}
           </select>
         </div>
-        <div className="form-group col-md-12 editor">
+        <div className="form-group editor">
           <label className="font-weight-bold">
             {" "}
             Description <span className="required"> * </span>{" "}
           </label>
-          <Editor
-            {...Config}
-            editorState={description}
-            toolbarClassName="toolbarClassName"
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-            onEditorStateChange={onEditorStateChange}
-            toolbar={{
-              image: {
-                uploadCallback: uploadImageCallBack,
-                alt: { present: true, mandatory: false },
-              },
-            }}
-          />
+          <Box className="">
+            <Editor
+              {...Config}
+              editorState={description}
+              toolbarClassName="toolbarClassName"
+              wrapperClassName="wrapperClassName"
+              editorClassName="editorClassName"
+              onEditorStateChange={onEditorStateChange}
+              toolbar={
+                {
+                  // image: {
+                  //   uploadCallback: uploadImageCallBack,
+                  //   alt: { present: true, mandatory: false },
+                  // },
+                }
+              }
+            />
+          </Box>
           <textarea
             style={{ display: "none" }}
             disabled
@@ -146,14 +182,14 @@ function BlogsAdd() {
           />
         </div>
         {isError !== null && <div className="errors"> {isError} </div>}
-        <div className="form-group col-sm-12 text-right">
+        <div className="form-group">
           <button type="submit" className="btn btn__theme">
             {" "}
             Submit{" "}
           </button>
         </div>
       </form>
-    </Container>
+    </Box>
   );
 }
 export default BlogsAdd;

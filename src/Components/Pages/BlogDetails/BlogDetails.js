@@ -4,13 +4,10 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -20,7 +17,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
-import LinkShare from "./../Home/HomeBlog/LinkShare";
+import LinkShare from "../Home/HomeBlog/LinkShare";
 import { Helmet } from "react-helmet";
 import BlogComment from "./BlogComment";
 import "./BlogDetails.css";
@@ -66,7 +63,7 @@ const BlogDetails = () => {
     <div>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>{"hello"}</title>
+        <title>{blogDescription.title}</title>
         <link rel="canonical" href={url} />
       </Helmet>
       <Container sx={{ my: 5 }}>

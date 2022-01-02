@@ -1,16 +1,15 @@
-import { TextField, Paper, Typography, Stack } from "@mui/material";
+import { TextField, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import useAuth from "./../../Hooks/useAuth";
-import Avatar from "@mui/material/Avatar";
 import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
-  const { user, loginUser, signInWithGoogle, isLoading, authError } = useAuth();
+  const { loginUser } = useAuth();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,9 +28,6 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle(location, navigate);
-  };
   return (
     <section className="login">
       <Paper elevation={3} sx={{ width: "50%", m: "auto", p: 5 }}>

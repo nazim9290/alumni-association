@@ -4,7 +4,8 @@
 .post-category {
   padding: 5px;
   width: 50%;
-  color: #f8f8f8;
+  border-radius: 5px;
+  color: white;
   position: relative;
   top: -50px;
   left: 50%;

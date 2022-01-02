@@ -11,7 +11,7 @@ const PunormiloniCommittee = () => {
       .then((res) => res.json())
       .then((data) => setPmCommittee(data));
   }, []);
-  console.log(pmCommittee);
+
   return (
     <Box component="div" sx={{ bgcolor: "info.main", p: 3 }}>
       <Container>

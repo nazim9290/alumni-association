@@ -2,11 +2,11 @@ import { Box } from "@mui/material";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
+
 import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import "./Member.css";
@@ -25,13 +25,13 @@ const Member = () => {
       </Typography>
       <Grid
         container
-        spacing={{ xs: 2, md: 2 }}
+        spacing={{ xs: 0.5, md: 2 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
         {members.map((member, index) => (
           <Grid item xs={2} sm={4} md={3} key={index}>
             <Card>
-              <Box sx={{ height: "300px" }}>
+              <Box>
                 <CardMedia
                   component="img"
                   height="auto"
@@ -56,7 +56,7 @@ const Member = () => {
                   alignItems="center"
                   spacing={1}
                 >
-                  <i class="fas fa-phone-square-alt"></i>
+                  <i className="fas fa-phone-square-alt"></i>
                   <i className="fab fa-twitter"></i>
                   <i className="fab fa-facebook"></i>
 

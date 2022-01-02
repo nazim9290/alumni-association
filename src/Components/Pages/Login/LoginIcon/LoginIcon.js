@@ -3,7 +3,7 @@ import React from "react";
 import useAuth from "./../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const LoginIcon = ({}) => {
+const LoginIcon = () => {
   const { signInWithGoogle } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();

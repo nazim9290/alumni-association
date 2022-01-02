@@ -2,8 +2,8 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import "./Upcoming.css";
 import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
 import Countdown from "../../../Shared/Countdwon/Countdwon";
+import Typography from "@mui/material/Typography";
 
 const UpcomingEvents = () => {
   return (
@@ -44,12 +44,12 @@ const UpcomingEvents = () => {
 
             {/*  */}
             <Grid container sx={{ my: 2 }}>
-              <Grid item xs={9} md={8}>
-                <Box>
+              <Grid item xs={8} md={8}>
+                <Typography component="div">
                   <Countdown />
-                </Box>
+                </Typography>
               </Grid>
-              <Grid item xs={3} md={4}>
+              <Grid item xs={4} md={4}>
                 <Button
                   sx={{ width: "100%", p: 2 }}
                   color="warning"

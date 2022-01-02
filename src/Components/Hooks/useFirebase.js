@@ -149,7 +149,7 @@ const useFirebase = () => {
       .then(function (response) {
         // handle success
         setposts(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch(function (error) {
         // handle error

@@ -1,28 +1,10 @@
-import {
-  Container,
-  Paper,
-  Typography,
-  Grid,
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Card,
-  CardHeader,
-  Chip,
-  Avatar,
-  Box,
-} from "@mui/material";
+import { Container, Paper, Typography, Grid, Avatar, Box } from "@mui/material";
 import { useState, useEffect } from "react";
-
 import axios from "axios";
 import "./Profile.css";
 import useAuth from "./../../Hooks/useAuth";
+import UserBlog from "./UserBlog/UserBlog";
 
-const formatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 2,
-});
 export default function App() {
   const { user, upload } = useAuth();
   const [quote, setQuote] = useState({});
@@ -58,7 +40,7 @@ export default function App() {
       </Paper>
       <br />
       <Paper elevation={3}>
-        <Grid container>
+        <Grid container sx={{ p: 5 }}>
           <Grid item xs={4}>
             <Avatar sx={{ width: 100, height: 100, mt: 5, ml: 5 }}>
               {user.photoURL === null ? (
@@ -88,6 +70,7 @@ export default function App() {
           </Grid>
         </Grid>
       </Paper>
+      <UserBlog />
     </Container>
   );
 }

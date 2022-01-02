@@ -5,7 +5,6 @@ import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import About from "./Components/Pages/About/About/About";
 import Events from "./Components/Pages/Events/Events/Events";
-import Blog from "./Components/Pages/Blog/Blog/Blog";
 import Login from "./Components/Pages/Login/Login";
 import Registration from "./Components/Pages/Login/Registration";
 import Notfound from "./Components/Pages/Notfound/Notfound";
@@ -22,6 +21,8 @@ import Dashboard from "./Components/DashBoard/Dashboard/Dashboard";
 import BlogsAdd from "./Components/DashBoard/BlogsCrete/BlogsAdd";
 import MakeAdmin from "./Components/DashBoard/MakeAdmin/MakeAdmin";
 import { Helmet } from "react-helmet";
+import Blogs from "./Components/Pages/Blogs/Blogs/Blogs";
+import AddEvent from "./Components/DashBoard/AddEvent/AddEvent";
 
 function App() {
   return (
@@ -41,7 +42,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/About" element={<About />} />
             <Route path="/Events" element={<Events />} />
-            <Route path="/Blog" element={<Blog />} />
+            <Route path="/Blog" element={<Blogs />} />
 
             <Route path="/Blog/:blogId" element={<BlogDetails />} />
             <Route path="/BlogEdit/:blogId" element={<Edit />} />
@@ -52,10 +53,11 @@ function App() {
               <Route path="/Dashboard" element={<Profile />} />
               <Route path={`/Dashboard/BlogWrite`} element={<BlogsAdd />} />
               <Route path={`/Dashboard/makeAdmin`} element={<MakeAdmin />} />
+              <Route path={`/Dashboard/addEvent`} element={<AddEvent />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/Registration" element={<Registration />} />
-            <Route path="/Notfound" element={<Notfound />} />
+            <Route path="*" element={<Notfound />} />
           </Routes>
           <Footer />
         </BrowserRouter>

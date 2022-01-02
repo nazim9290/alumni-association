@@ -1,7 +1,6 @@
 import React from "react";
 import Advisor from "../../Member/Advisor/Advisor";
 import ExecutiveMember from "../../Member/ExecutiveMember/ExecutiveMember";
-import Committee from "./Committee";
 
 const Committees = () => {
   return (
