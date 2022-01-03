@@ -54,7 +54,7 @@ select {
 .member-form input[type="file"] {
   color: white;
 }
-.member-form button[type="submit"],
+.container button[type="submit"],
 .member-form input[type="submit"] {
   background: #ec5990;
   color: white;

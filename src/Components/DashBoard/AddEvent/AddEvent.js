@@ -46,7 +46,7 @@ const AddEvent = () => {
       time: eventInfo.time,
     };
     axios
-      .post("http://localhost:5000/event", eventData)
+      .post("https://calm-escarpment-64359.herokuapp.com/event", eventData)
       .then(function (res) {
         console.log(res);
         if (res.data.insertedId) {

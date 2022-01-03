@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   return (
-    <Container className="profile" maxWidth="md" sx={{ my: 1 }}>
+    <Container className="profile" maxWidth="xl" sx={{ my: 1 }}>
       <Paper className="effect effect-c" elevation={3}>
         <Typography className="effect__heading">“{quote.text}”</Typography>
         <Typography className="effect__subheading">

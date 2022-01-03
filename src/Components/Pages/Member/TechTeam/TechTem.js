@@ -17,7 +17,7 @@ const TechTeam = () => {
           sx={{ mb: 3 }}
         >
           {Array.from(Array(6)).map((_, index) => (
-            <Grid item xs={2} sm={4} md={4} key={index}>
+            <Grid item xs={4} sm={4} md={4} key={index}>
               <Paper elevation={3} sx={{ p: 2 }}>
                 <Box component="div" sx={{ height: "100%" }}>
                   <img

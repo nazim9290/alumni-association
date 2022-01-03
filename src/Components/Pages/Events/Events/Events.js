@@ -2,6 +2,9 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import "../../Home/UpcomingEvents/Upcoming.css";
 import Button from "@mui/material/Button";
+import Countdown from "../../../Shared/Countdwon/Countdwon";
+import { Typography } from "@mui/material";
+import "../../Home/UpcomingEvents/Upcoming.css";
 const Events = () => {
   return (
     <div>
@@ -34,39 +37,13 @@ const Events = () => {
             </Grid>
 
             {/*  */}
-            <Grid container>
-              <Grid item xs={9} md={8}>
-                <div className="timer">
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Days</small>
-                    </p>
-                  </section>
-                  <span>:</span>
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Hours</small>
-                    </p>
-                  </section>
-                  <span>:</span>
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Minute</small>
-                    </p>
-                  </section>
-                  <span>:</span>
-                  <section>
-                    <h2>87</h2>
-                    <p>
-                      <small>Seconds</small>
-                    </p>
-                  </section>
-                </div>
+            <Grid container sx={{ my: 2 }}>
+              <Grid item xs={8} md={8}>
+                <Typography component="div">
+                  <Countdown />
+                </Typography>
               </Grid>
-              <Grid item xs={3} md={4}>
+              <Grid item xs={4} md={4}>
                 <Button
                   sx={{ width: "100%", p: 2 }}
                   color="warning"

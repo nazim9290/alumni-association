@@ -13,8 +13,8 @@ const PunormiloniCommittee = () => {
   }, []);
 
   return (
-    <Box component="div" sx={{ bgcolor: "info.main", p: 3 }}>
-      <Container>
+    <Box component="div" sx={{ bgcolor: "info.main", py: 3 }}>
+      <Box className="punormiloni">
         <Box component="h2" color="white">
           Punormiloni Committee
         </Box>
@@ -49,7 +49,7 @@ const PunormiloniCommittee = () => {
             </Grid>
           ))}
         </Grid>
-      </Container>
+      </Box>
     </Box>
   );
 };

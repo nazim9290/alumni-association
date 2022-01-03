@@ -9,10 +9,10 @@ import { Container } from "@mui/material";
 const Footer = () => {
   return (
     <div className="footer">
-      <Box className="logo" sx={{ mx: "auto" }}>
-        <img src={logo} alt="" width="100" />
+      <Box sx={{ mx: "auto" }}>
+        <img className="logo" src={logo} alt="" width="100" />
       </Box>
-      <Container>
+      <Box sx={{ mx: 2 }}>
         <Grid container sx={{ mt: 2 }} spacing={1} className="footer-item">
           <Grid item xs={6} md={4}>
             <h4>Where We Are</h4>
@@ -37,7 +37,7 @@ const Footer = () => {
             <Link to="home">Home</Link>
           </Grid>
         </Grid>
-      </Container>
+      </Box>
     </div>
   );
 };

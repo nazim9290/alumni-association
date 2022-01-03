@@ -24,7 +24,7 @@ const Advisor = () => {
           }}
           breakpoints={{
             640: {
-              slidesPerView: 2,
+              slidesPerView: 1,
               spaceBetween: 10,
             },
             768: {
@@ -40,7 +40,7 @@ const Advisor = () => {
         >
           {Array.from(Array(12)).map((_, index) => (
             <SwiperSlide key={index}>
-              <Paper elevation={3} sx={{ maxWidth: 400 }}>
+              <Paper elevation={3}>
                 <img
                   height="100%"
                   src="http://nmphsaabd.org/wp-content/uploads/2020/08/minto.jpg"

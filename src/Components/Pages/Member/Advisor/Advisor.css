@@ -1,6 +1,5 @@
 .swiper {
   width: 100%;
-  height: 100%;
 }
 
 .swiper-slide {
@@ -28,4 +27,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.card-padding {
+  padding: 0 1rem;
+}
+@media only screen and (max-width: 600px) {
+  .card-padding {
+    padding: 0 2rem;
+  }
 }

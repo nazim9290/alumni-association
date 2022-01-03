@@ -1,8 +1,15 @@
 .footer {
   background-color: #7f8fa6;
   padding-bottom: 20px;
+  margin-top: 10px;
 }
 .footer-item a {
   text-decoration: none;
   color: white;
+}
+.footer .logo {
+  background-color: white;
+  margin-top: 10px;
+  border-radius: 50%;
+  padding: 10px;
 }

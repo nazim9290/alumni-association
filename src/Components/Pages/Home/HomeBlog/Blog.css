@@ -1,3 +1,14 @@
+.home-blog {
+  background-image: linear-gradient(
+    to right,
+    #beccd4,
+    #a9d6e4,
+    #8ce0ec,
+    #6debea,
+    #54f4de
+  );
+  margin-bottom: 10px;
+}
 .post-title {
   color: rgb(15, 157, 240);
 }

@@ -51,7 +51,7 @@ const UserRegistration = () => {
     };
 
     axios
-      .post("http://localhost:5000/xStudent", userData)
+      .post("https://calm-escarpment-64359.herokuapp.com/xStudent", userData)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({

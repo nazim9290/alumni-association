@@ -17,7 +17,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import LinkShare from "./LinkShare";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import BlogComment from "../../BlogDetails/BlogComment";
 import useAuth from "./../../../Hooks/useAuth";
 
@@ -58,12 +58,7 @@ const HomeBlog = () => {
     navigate(`/Blog/${id}`);
   };
   return (
-    <Box
-      style={{
-        backgroundImage:
-          " linear-gradient(to right, #beccd4, #a9d6e4, #8ce0ec, #6debea, #54f4de)",
-      }}
-    >
+    <Box className="home-blog">
       <Container maxWidth="xl">
         <Box
           sx={{
@@ -76,7 +71,7 @@ const HomeBlog = () => {
           <Box component="h1" sx={{ flexGrow: 1, color: "#fff" }}>
             Blog And News on Campus
           </Box>
-          <Box>See All</Box>
+          <NavLink to="/blog">See All</NavLink>
         </Box>
         <Grid
           container
@@ -84,7 +79,7 @@ const HomeBlog = () => {
           spacing={{ xs: 1, md: 1 }}
           columns={{ xs: 4, sm: 8, md: 12 }}
         >
-          {posts.slice(-3).map((post, index) => (
+          {posts.slice(0, 3).map((post, index) => (
             <Grid
               item
               xs={4}
