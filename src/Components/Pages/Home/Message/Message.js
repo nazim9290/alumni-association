@@ -63,9 +63,6 @@ const Message = () => {
                   সভাপতি নিজমেহার মডেল পাইলট উচ্চ বিদ্যালয়” অ্যালামনাই
                   অ্যাসোসিয়েশন
                 </Typography>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
               </CardContent>
             </Card>
           </Grid>
@@ -122,9 +119,6 @@ const Message = () => {
                   সাধারন সম্পাদক নিজমেহার মডেল পাইলট উচ্চ বিদ্যালয়” অ্যালামনাই
                   অ্যাসোসিয়েশন
                 </Typography>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
               </CardContent>
             </Card>
           </Grid>

@@ -14,20 +14,33 @@ import ListItemText from "@mui/material/ListItemText";
 import useAuth from "./../../Hooks/useAuth";
 
 const DashboardRoute = () => {
-  const { logout } = useAuth();
-  const icons = [
-    <AccountCircleIcon />,
-    <CreateIcon />,
-    <SupervisorAccountIcon />,
-    <EventNoteIcon />,
-    <LogoutIcon />,
-  ];
-  const route = ["Profile", "Blog Write", "Make Admin", "Add Event", "Log Out"];
+  const { logout, user, admin } = useAuth();
+  const icons = [<AccountCircleIcon />, <CreateIcon />, <LogoutIcon />];
+  const route = ["Profile", "Blog Write", "Log Out"];
+  const adminicons = [<SupervisorAccountIcon />, <EventNoteIcon />];
+  const adminRoute = ["Make Admin", "Add Event"];
   return (
     <div>
-      <List>
-        {["", "BlogWrite", "MakeAdmin", "addEvent", "Logout"].map(
-          (text, index) => (
+      {/* for admin only  */}
+      {user.email && admin && (
+        <List>
+          {["MakeAdmin", "addEvent"].map((text, index) => (
+            <Box key={index}>
+              <NavLink to={text}>
+                <ListItem button>
+                  {" "}
+                  <ListItemIcon>{adminicons[index]}</ListItemIcon>
+                  <ListItemText primary={adminRoute[index]} />
+                </ListItem>
+              </NavLink>
+            </Box>
+          ))}
+        </List>
+      )}
+      {/* for all user  */}
+      {user.email && (
+        <List>
+          {["", "BlogWrite", "Logout"].map((text, index) => (
             <Box key={index}>
               {text === "Logout" ? (
                 <ListItem onClick={logout} button>
@@ -44,9 +57,9 @@ const DashboardRoute = () => {
                 </NavLink>
               )}
             </Box>
-          )
-        )}
-      </List>
+          ))}
+        </List>
+      )}
     </div>
   );
 };

@@ -14,6 +14,7 @@ import Regex from "./../../../Shared/Regex/Regex";
 import Fab from "@mui/material/Fab";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
   { id: "Name", label: "Name", minWidth: 100 },
@@ -36,6 +37,7 @@ const columns = [
 ];
 
 const UserBlog = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = React.useState(0);
@@ -43,6 +45,9 @@ const UserBlog = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+  const handleUpdate = (id) => {
+    navigate(`/Dashboard/BlogEdit/${id}`);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -67,6 +72,24 @@ const UserBlog = () => {
         // always executed
       });
   }, [user.email]);
+
+  //delet api call
+  const deleteBlog = (id) => {
+    let result = window.confirm("Are you sure you want to delete?");
+    if (result) {
+      fetch(`http://localhost:5000/blog/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("deleted successfully");
+            const remainingPost = blogs.filter((blog) => blog._id !== id);
+            setBlogs(remainingPost);
+          }
+        });
+    }
+  };
   return (
     <div>
       <Paper sx={{ width: "100%", overflow: "hidden", my: 5 }}>
@@ -88,23 +111,36 @@ const UserBlog = () => {
             <TableBody>
               {blogs
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
+                .map((blog) => {
                   return (
                     <TableRow
-                      key={row._id}
+                      key={blog._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {row.title}
+                        {blog.title}
                       </TableCell>
-                      <TableCell>{row.category}</TableCell>
-                      <TableCell>{Regex(row?.description)}</TableCell>
+                      <TableCell>{blog.category}</TableCell>
+                      <TableCell>{Regex(blog?.description)}</TableCell>
                       <TableCell>Pending</TableCell>
                       <TableCell>
-                        <Fab sx={{ mr: 2 }} color="secondary" aria-label="edit">
+                        <Fab
+                          onClick={() => {
+                            handleUpdate(blog._id);
+                          }}
+                          sx={{ mr: 2 }}
+                          color="secondary"
+                          aria-label="edit"
+                        >
                           <EditIcon />
                         </Fab>
-                        <Fab color="primary" aria-label="edit">
+                        <Fab
+                          onClick={() => {
+                            deleteBlog(blog._id);
+                          }}
+                          color="primary"
+                          aria-label="edit"
+                        >
                           <DeleteIcon />
                         </Fab>
                       </TableCell>

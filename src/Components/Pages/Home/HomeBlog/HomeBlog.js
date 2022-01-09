@@ -109,10 +109,10 @@ const HomeBlog = () => {
                       elevation={3}
                       className="post-category"
                       sx={{
-                        bgcolor: `${post?.category?.split(",")[1]}`,
+                        bgcolor: `${post?.categoryColor}`,
                       }}
                     >
-                      {post?.category?.split(",")[0]}
+                      {post?.category}
                     </Box>
                     <Typography
                       className="post-title"

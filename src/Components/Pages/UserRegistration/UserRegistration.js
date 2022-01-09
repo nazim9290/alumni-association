@@ -45,9 +45,12 @@ const UserRegistration = () => {
       city: data.city,
       country: data.country,
       facebookUrl: data.facebookUrl,
+      twitterUrl: data.twitterUrl,
+      linkedinUrl: data.linkedinUrl,
       status: data.status,
       place: data.place,
       blood: data.blood,
+      comments: data.comments,
     };
 
     axios
@@ -87,7 +90,9 @@ const UserRegistration = () => {
         <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
           <div className="container">
             <div>
-              <label>Your Name</label>
+              <label>
+                Your Name <span className="required">*</span>
+              </label>
               <input
                 {...register("fullName", { required: true })}
                 placeholder="Enter your full name"
@@ -101,7 +106,11 @@ const UserRegistration = () => {
             </div>
 
             <div>
-              <label>Upload your image</label>
+              <label>
+                Member Profile Picture (use image less than 1MB and Recommended
+                Dimension 600px/600px, Recommended Image Type: JPEG/JPG/PNG )
+                <span className="required">*</span>
+              </label>
               <input
                 type="file"
                 {...register("image", { required: true })}
@@ -109,7 +118,9 @@ const UserRegistration = () => {
               />
             </div>
             <div>
-              <label>Your Phone Number</label>
+              <label>
+                Your Phone Number <span className="required">*</span>
+              </label>
               <input
                 {...register("phone", { required: true })}
                 placeholder="Enter your Phone Number"
@@ -122,7 +133,9 @@ const UserRegistration = () => {
               )}
             </div>
             <div>
-              <label>Your Email</label>
+              <label>
+                Your Email <span className="required">*</span>
+              </label>
               <input
                 {...register("email", { required: true })}
                 placeholder="Enter your Email"
@@ -143,7 +156,9 @@ const UserRegistration = () => {
               </select>
             </div>
             <div>
-              <label htmlFor="">Select Your Dakhil Exam Year</label>
+              <label htmlFor="">
+                Select Your Dakhil Exam Year <span className="required">*</span>
+              </label>
               <select
                 type="number"
                 {...register("examYear", { required: true })}
@@ -168,14 +183,34 @@ const UserRegistration = () => {
               />
             </div>
             <div>
-              <label>Facebook User URL</label>
+              <label>
+                Facebook User URL <span className="required">if you have</span>
+              </label>
               <input
                 {...register("facebookUrl", { required: true })}
                 placeholder="https://www.facebook.com/{userName}"
               />
             </div>
             <div>
-              <label>Current Status*</label>
+              <label>
+                Twitter User URL <span className="required">if you have</span>
+              </label>
+              <input
+                {...register("twitter", { required: true })}
+                placeholder="https://www.twitter.com/{userName}"
+              />
+            </div>
+            <div>
+              <label>
+                Linkedin User URL <span className="required">if you have</span>
+              </label>
+              <input
+                {...register("linkedin", { required: true })}
+                placeholder="https://www.linkedin.com/{userName}"
+              />
+            </div>
+            <div>
+              <label>Current Status</label>
               <select {...register("status")}>
                 <option defaultValue>select Current Status..</option>
                 <option value="Working">Working</option>
@@ -185,13 +220,43 @@ const UserRegistration = () => {
               </select>
             </div>
             <div>
-              <label>Company or Institute name</label>
-              <input {...register("place")} placeholder="e.g Dhaka College " />
+              <label>
+                Company or Institute name <span className="required">*</span>
+              </label>
+              <input
+                {...register("place", { required: true })}
+                placeholder="e.g Dhaka College / city bank "
+              />
+              {errors.place?.type === "required" && (
+                <p className="errors">
+                  {errors.place?.type === "required" &&
+                    "Work Place name is required"}
+                </p>
+              )}
+            </div>
+            <div>
+              <label>
+                Title Of Your Position <span className="required">*</span>
+              </label>
+              <input
+                {...register("position", { required: true })}
+                placeholder="e.g Student / manager"
+              />
+              {errors.position?.type === "required" && (
+                <p className="errors">
+                  {errors.position?.type === "required" &&
+                    "your work position is required"}
+                </p>
+              )}
             </div>
             <div>
               <label>Blood Group</label>
               <input {...register("blood")} placeholder="e.g A+ " />
             </div>
+          </div>
+          <div>
+            <label>Comments / Questions:</label>
+            <textarea rows="5" {...register("comments")} />
           </div>
           <button>Submit</button>
         </form>

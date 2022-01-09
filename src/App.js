@@ -23,6 +23,9 @@ import MakeAdmin from "./Components/DashBoard/MakeAdmin/MakeAdmin";
 import { Helmet } from "react-helmet";
 import Blogs from "./Components/Pages/Blogs/Blogs/Blogs";
 import AddEvent from "./Components/DashBoard/AddEvent/AddEvent";
+import PrivateRoute from "./Components/Pages/Login/PrivateRoute/PrivateRoute";
+import BlogEdit from "./Components/DashBoard/BlogsCrete/BlogEdit";
+import EditBlog from "./Components/DashBoard/EditBlog/EditBlog";
 
 function App() {
   return (
@@ -43,15 +46,25 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/Blog" element={<Blogs />} />
-
             <Route path="/Blog/:blogId" element={<BlogDetails />} />
             <Route path="/BlogEdit/:blogId" element={<Edit />} />
             <Route path="/Committee" element={<Committees />} />
             <Route path="/Member" element={<Members />} />
             <Route path="/becomeMember" element={<UserRegistration />} />
-            <Route path="/Dashboard" element={<Dashboard />}>
+            <Route
+              path="/Dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            >
               <Route path="/Dashboard" element={<Profile />} />
               <Route path={`/Dashboard/BlogWrite`} element={<BlogsAdd />} />
+              <Route
+                path={`/Dashboard/BlogEdit/:blogId`}
+                element={<EditBlog />}
+              />
               <Route path={`/Dashboard/makeAdmin`} element={<MakeAdmin />} />
               <Route path={`/Dashboard/addEvent`} element={<AddEvent />} />
             </Route>

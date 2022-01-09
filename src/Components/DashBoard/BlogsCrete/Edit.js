@@ -6,20 +6,19 @@ import EditBlogs from "./EditBlogs";
 
 const Edit = () => {
   const { blogId } = useParams();
-  const [ispost, setpost] = useState({});
+  const [post, setpost] = useState({});
   useEffect(() => {
-    fetch(`https://calm-escarpment-64359.herokuapp.com/blog/${blogId}`)
+    fetch(`http://localhost:5000/blog/${blogId}`)
       .then((res) => res.json())
       .then((data) => setpost(data));
   }, []);
-  console.log(ispost);
+  console.log(post);
 
   return (
     <>
       <h1>Edit your post</h1>
       <>
-        {/* <EditBlogs {...ispost} /> */}
-        <BlogEdit {...ispost} />
+        <BlogEdit {...post} />
       </>
     </>
   );

@@ -4,7 +4,7 @@ import logo from "../../../img/logo.png";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import { Container } from "@mui/material";
+import { Container, Divider } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -13,7 +13,7 @@ const Footer = () => {
         <img className="logo" src={logo} alt="" width="100" />
       </Box>
       <Box sx={{ mx: 2 }}>
-        <Grid container sx={{ mt: 2 }} spacing={1} className="footer-item">
+        <Grid container className="footer-item">
           <Grid item xs={6} md={4}>
             <h4>Where We Are</h4>
             <iframe
@@ -26,17 +26,62 @@ const Footer = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <h4>Quick Links</h4>
-            <Link to="home">Home</Link>
+            <Link to="Home">
+              <i class="fas fa-angle-right"></i>Home
+            </Link>
+            <Link to="AboutUs">
+              <i class="fas fa-angle-right"></i>About Us
+            </Link>
+            <Link to="News">
+              <i class="fas fa-angle-right"></i>News
+            </Link>
+            <Link to="FAQ">
+              <i class="fas fa-angle-right"></i>FAQ
+            </Link>
+            <Link to="ContactUs">
+              <i class="fas fa-angle-right"></i>Contact Us
+            </Link>
+            <Link to="Testimonials">
+              <i class="fas fa-angle-right"></i>Testimonials
+            </Link>
+            <Link to="Sitemap">
+              <i class="fas fa-angle-right"></i>Sitemap
+            </Link>
           </Grid>
           <Grid item xs={6} md={3}>
             <h4>Committee</h4>
-            <Link to="home">Home</Link>
+            <Link to="AdvisoryBoard">
+              <i class="fas fa-angle-right"></i>Advisory Board
+            </Link>
+            <Link to="ExecutiveBoard">
+              <i class="fas fa-angle-right"></i>Executive Board
+            </Link>
+            <Link to="ExecutiveMember">
+              <i class="fas fa-angle-right"></i>Executive Member
+            </Link>
+            <Link to="TechTeam">
+              <i class="fas fa-angle-right"></i>Tech Team
+            </Link>
+            <Link to="Constitution">
+              <i class="fas fa-angle-right"></i>Constitution
+            </Link>
+            <Link to="DonorList">
+              <i class="fas fa-angle-right"></i>Donor list
+            </Link>
           </Grid>
           <Grid item xs={6} md={2}>
             <h4>Contact</h4>
-            <Link to="home">Home</Link>
+            <Box color="white" sx={{ textAlign: "start" }}>
+              Hazi Madbor Ali Hasania Dakhil Madrasha 2626,
+              Khilbarirtake,Vatara, Dhaka- 1212 Established in 1991.
+            </Box>
           </Grid>
         </Grid>
+        <Divider variant="middle" color="white" sx={{ mt: 5, mb: 2 }} />
+        <Box className="rights">
+          &copy; {new Date().getFullYear()} Hasania Alumni Association.All
+          Rights Reserved. Designed & Developed by NDP Tech Team
+        </Box>
       </Box>
     </div>
   );

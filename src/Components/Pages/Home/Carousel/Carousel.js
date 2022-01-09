@@ -19,7 +19,6 @@ const Carousel = () => {
   return (
     <div className="carousel">
       <>
-        <marquee>This text will scroll from right to left</marquee>
         <Swiper
           cssMode={true}
           navigation={true}
