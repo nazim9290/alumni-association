@@ -1,4 +1,4 @@
-import { TextField, Paper, Typography } from "@mui/material";
+import { TextField, Paper, Typography, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import useAuth from "./../../Hooks/useAuth";
 import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
+import ResetPassword from "../../Shared/DialogBox/ResetPassword";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -13,6 +14,16 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleOnChange = (e) => {
     const field = e.target.name;
@@ -29,19 +40,11 @@ const Login = () => {
   };
 
   return (
-    <section className="login">
-      <Paper elevation={3} sx={{ width: "50%", m: "auto", p: 5 }}>
+    <section className="login-section">
+      <Paper elevation={3} className="input-box">
         <Typography variant="h4">LOG IN</Typography>
         <form onSubmit={handleLoginSubmit}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-
-              mx: "auto",
-              boxShadow: 3,
-            }}
-          >
+          <Box>
             <TextField
               id="standard-textarea"
               label="email"
@@ -66,16 +69,33 @@ const Login = () => {
               onChange={handleOnChange}
               fullWidth
             />
-            <Button type="submit" sx={{ my: 5 }} variant="contained">
+            <Button
+              type="submit"
+              sx={{ my: 5, width: "100%" }}
+              variant="contained"
+            >
               Sign in
             </Button>
           </Box>
         </form>
-        <Box sx={{ mb: 3 }}>
-          <Link to="/registration">New User? click hare</Link>
-        </Box>
+        <Stack
+          direction={{ xs: "row", sm: "row" }}
+          sx={{ justifyContent: "space-between", alignItems: "center" }}
+        >
+          <Box sx={{ mb: 3 }}>
+            <Link to="/registration">New User? click hare</Link>
+          </Box>
+          <Box sx={{ mb: 3 }}>
+            <Button onClick={handleClickOpen}>Forgot Password ?</Button>
+          </Box>
+        </Stack>
         <LoginIcon />
       </Paper>
+      <ResetPassword
+        handleClickOpen={handleClickOpen}
+        handleClose={handleClose}
+        open={open}
+      />
     </section>
   );
 };

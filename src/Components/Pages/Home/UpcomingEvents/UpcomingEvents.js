@@ -49,12 +49,8 @@ const UpcomingEvents = () => {
                   <Countdown />
                 </Typography>
               </Grid>
-              <Grid item xs={4} md={4}>
-                <Button
-                  sx={{ width: "100%", p: 2 }}
-                  color="warning"
-                  variant="contained"
-                >
+              <Grid item xs={3} md={4} sx={{ ml: 3 }}>
+                <Button color="warning" variant="contained">
                   Join Now
                 </Button>
               </Grid>

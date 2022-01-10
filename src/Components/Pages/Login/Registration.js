@@ -7,7 +7,9 @@ import {
   CircularProgress,
   Alert,
   Box,
+  Paper,
 } from "@mui/material";
+import "./Login.css";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "./../../Hooks/useAuth";
@@ -35,20 +37,8 @@ const Registration = () => {
 
   return (
     <Container sx={{ my: 5 }}>
-      <Box
-        item
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: "50%",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow: 3,
-          m: "auto",
-          p: 5,
-        }}
-      >
-        <Typography variant="body1" gutterBottom>
+      <Paper elevation={3} className="input-box">
+        <Typography variant="h5" gutterBottom>
           Register
         </Typography>
         {!isLoading && (
@@ -108,7 +98,7 @@ const Registration = () => {
           <Alert severity="success">User Created successfully!</Alert>
         )}
         {authError && <Alert severity="error">{authError}</Alert>}
-      </Box>
+      </Paper>
     </Container>
   );
 };

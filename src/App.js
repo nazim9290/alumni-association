@@ -26,6 +26,8 @@ import AddEvent from "./Components/DashBoard/AddEvent/AddEvent";
 import PrivateRoute from "./Components/Pages/Login/PrivateRoute/PrivateRoute";
 import BlogEdit from "./Components/DashBoard/BlogsCrete/BlogEdit";
 import EditBlog from "./Components/DashBoard/EditBlog/EditBlog";
+import Privacy from "./Components/Pages/Privacy&policy/Privacy";
+import AddCommittee from "./Components/DashBoard/AddCommittee/AddCommittee";
 
 function App() {
   return (
@@ -67,9 +69,14 @@ function App() {
               />
               <Route path={`/Dashboard/makeAdmin`} element={<MakeAdmin />} />
               <Route path={`/Dashboard/addEvent`} element={<AddEvent />} />
+              <Route
+                path={`/Dashboard/addCommittee`}
+                element={<AddCommittee />}
+              />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/Registration" element={<Registration />} />
+            <Route path="/privacy" element={<Privacy />} />
             <Route path="*" element={<Notfound />} />
           </Routes>
           <Footer />

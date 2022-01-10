@@ -57,7 +57,7 @@ const AddEvent = () => {
       });
   };
   return (
-    <Container>
+    <Container maxWidth="xl">
       <form onSubmit={eventSubmit}>
         <Stack
           direction="column"

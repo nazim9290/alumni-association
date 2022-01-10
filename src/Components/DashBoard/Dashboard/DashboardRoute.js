@@ -10,6 +10,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
 
 import useAuth from "./../../Hooks/useAuth";
 
@@ -17,14 +18,18 @@ const DashboardRoute = () => {
   const { logout, user, admin } = useAuth();
   const icons = [<AccountCircleIcon />, <CreateIcon />, <LogoutIcon />];
   const route = ["Profile", "Blog Write", "Log Out"];
-  const adminicons = [<SupervisorAccountIcon />, <EventNoteIcon />];
-  const adminRoute = ["Make Admin", "Add Event"];
+  const adminicons = [
+    <SupervisorAccountIcon />,
+    <EventNoteIcon />,
+    <GroupAddIcon />,
+  ];
+  const adminRoute = ["Make Admin", "Add Event", " Add Committee"];
   return (
     <div>
       {/* for admin only  */}
       {user.email && admin && (
         <List>
-          {["MakeAdmin", "addEvent"].map((text, index) => (
+          {["MakeAdmin", "addEvent", "addCommittee"].map((text, index) => (
             <Box key={index}>
               <NavLink to={text}>
                 <ListItem button>

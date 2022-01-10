@@ -77,7 +77,7 @@ const UserBlog = () => {
   const deleteBlog = (id) => {
     let result = window.confirm("Are you sure you want to delete?");
     if (result) {
-      fetch(`http://localhost:5000/blog/${id}`, {
+      fetch(`https://calm-escarpment-64359.herokuapp.com/blog/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

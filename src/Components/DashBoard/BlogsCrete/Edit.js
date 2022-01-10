@@ -8,7 +8,7 @@ const Edit = () => {
   const { blogId } = useParams();
   const [post, setpost] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/blog/${blogId}`)
+    fetch(`https://calm-escarpment-64359.herokuapp.com/blog/${blogId}`)
       .then((res) => res.json())
       .then((data) => setpost(data));
   }, []);

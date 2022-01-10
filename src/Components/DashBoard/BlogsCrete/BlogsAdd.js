@@ -12,6 +12,7 @@ import useAuth from "./../../Hooks/useAuth";
 import { Box } from "@mui/material";
 import Swal from "sweetalert2";
 import Config from "./Config";
+import SweetAlert from "./../../Shared/SweetAlert/SweetAlert";
 
 function BlogsAdd() {
   let editorState = EditorState.createEmpty();
@@ -66,8 +67,8 @@ function BlogsAdd() {
         .post(`https://calm-escarpment-64359.herokuapp.com/blog`, {
           title: userInfo.title,
           description: userInfo.description.value,
-          category: userInfo.category,
-          categoryColor: "",
+          category: userInfo.category[0],
+          categoryColor: userInfo.category[1],
           img: url,
           writer: {
             email: user.email,
@@ -78,16 +79,8 @@ function BlogsAdd() {
         })
         .then((res) => {
           if (res.data.insertedId) {
-            setSuccess(
-              Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Your Post has been saved",
-                showConfirmButton: false,
-                timer: 1500,
-              })
-            );
-            navigate("/home");
+            setSuccess(SweetAlert("Your Post has been saved"));
+            navigate("/dashboard");
           }
         });
     } catch (error) {

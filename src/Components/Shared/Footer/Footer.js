@@ -14,7 +14,7 @@ const Footer = () => {
       </Box>
       <Box sx={{ mx: 2 }}>
         <Grid container className="footer-item">
-          <Grid item xs={6} md={4}>
+          <Grid item xs={12} md={4}>
             <h4>Where We Are</h4>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.7428341775644!2d90.42995981445664!3d23.792170293097485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c70c839a716f%3A0x7ac2fafa0907cbac!2sHazi%20Madbor%20Ali%20Hasania%20Dakhil%20Madrasha!5e0!3m2!1sen!2sjp!4v1639007005021!5m2!1sen!2sjp"
@@ -24,7 +24,7 @@ const Footer = () => {
               loading="lazy"
             ></iframe>
           </Grid>
-          <Grid item xs={6} md={3}>
+          <Grid item xs={4} md={3}>
             <h4>Quick Links</h4>
             <Link to="Home">
               <i class="fas fa-angle-right"></i>Home
@@ -48,7 +48,7 @@ const Footer = () => {
               <i class="fas fa-angle-right"></i>Sitemap
             </Link>
           </Grid>
-          <Grid item xs={6} md={3}>
+          <Grid item xs={4} md={3}>
             <h4>Committee</h4>
             <Link to="AdvisoryBoard">
               <i class="fas fa-angle-right"></i>Advisory Board
@@ -69,7 +69,7 @@ const Footer = () => {
               <i class="fas fa-angle-right"></i>Donor list
             </Link>
           </Grid>
-          <Grid item xs={6} md={2}>
+          <Grid item xs={4} md={2}>
             <h4>Contact</h4>
             <Box color="white" sx={{ textAlign: "start" }}>
               Hazi Madbor Ali Hasania Dakhil Madrasha 2626,
