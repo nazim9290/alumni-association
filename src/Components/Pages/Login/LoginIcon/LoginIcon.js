@@ -4,12 +4,14 @@ import useAuth from "./../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const LoginIcon = () => {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogleOrFacebook, googleProvider, facebookProvider } =
+    useAuth();
   const location = useLocation();
   const navigate = useNavigate();
-  const handleGoogleSignIn = () => {
-    signInWithGoogle(location, navigate);
+  const handleGoogleSignIn = (provider) => {
+    signInWithGoogleOrFacebook(provider, location, navigate);
   };
+
   return (
     <div>
       <Stack
@@ -17,13 +19,19 @@ const LoginIcon = () => {
         spacing={{ xs: 1, sm: 1, md: 2 }}
         sx={{ justifyContent: "center" }}
       >
-        <Button variant="contained" onClick={handleGoogleSignIn}>
+        <Button
+          variant="contained"
+          onClick={() => handleGoogleSignIn(googleProvider)}
+        >
           <Avatar src="https://i.ibb.co/JjDZnYF/download.png" />
           <Typography component="p" variant="p" color="white">
             Sign in with Google
           </Typography>
         </Button>
-        <Button variant="contained" onClick={handleGoogleSignIn}>
+        <Button
+          variant="contained"
+          onClick={() => handleGoogleSignIn(facebookProvider)}
+        >
           <Avatar src="https://i.ibb.co/WKXD8js/facebook.png" />
           <Typography component="p" variant="p" color="white">
             Sign in with facebook

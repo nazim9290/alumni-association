@@ -1,20 +1,18 @@
-import { Box } from "@mui/material";
-import axios from "axios";
-import { convertToRaw, EditorState } from "draft-js";
-import draftToHtml from "draftjs-to-html";
 import React, { useState } from "react";
+import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../BlogsCrete/Blogs.css";
+import categorys from "../BlogsCrete/useCategory";
+import { Box } from "@mui/material";
+import Swal from "sweetalert2";
+import Config from "../BlogsCrete/Config";
 import useAuth from "./../../Hooks/useAuth";
-import SweetAlert from "./../../Shared/SweetAlert/SweetAlert";
-import "./Blogs.css";
-import Config from "./Config";
-import NowDate from "./NowDate";
-import categorys from "./useCategory";
 
-
-function BlogsAdd() {
+function BlogEdit() {
   let editorState = EditorState.createEmpty();
   const [description, setDescription] = useState(editorState);
   const onEditorStateChange = (editorState) => {
@@ -36,10 +34,7 @@ function BlogsAdd() {
       [e.target.name]: e.target.value,
     });
   };
-  const nowDate = NowDate();
 
-
-//image processing and send file cloudinary
   const processFile = (e) => {
     var image = e.target.files[0];
     const data = new FormData();
@@ -57,7 +52,6 @@ function BlogsAdd() {
       .catch((err) => console.log(err));
   };
 
-  //Blogs details data send to backend
   const addDetails = async (event) => {
     try {
       event.preventDefault();
@@ -70,20 +64,27 @@ function BlogsAdd() {
         .post(`https://calm-escarpment-64359.herokuapp.com/blog`, {
           title: userInfo.title,
           description: userInfo.description.value,
-          category: userInfo.category[0],
-          categoryColor: userInfo.category[1],
+          category: userInfo.category,
+          categoryColor: "",
           img: url,
           writer: {
             email: user.email,
             name: user.displayName,
             img: user.photoURL,
           },
-          date: nowDate,
         })
         .then((res) => {
           if (res.data.insertedId) {
-            setSuccess(SweetAlert("Your Post has been saved"));
-            navigate("/dashboard");
+            setSuccess(
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your Post has been saved",
+                showConfirmButton: false,
+                timer: 1500,
+              })
+            );
+            navigate("/home");
           }
         });
     } catch (error) {
@@ -93,7 +94,7 @@ function BlogsAdd() {
   return (
     <Box className="blogs">
       <form onSubmit={addDetails} className="update__forms">
-        <h1 className="myaccount-content"> Add Your Content </h1>
+        <h1 className="myaccount-content"> Edit Your Blog </h1>
         <div className="form-row">
           <label className="font-weight-bold">
             {" "}
@@ -188,4 +189,4 @@ function BlogsAdd() {
     </Box>
   );
 }
-export default BlogsAdd;
+export default BlogEdit;

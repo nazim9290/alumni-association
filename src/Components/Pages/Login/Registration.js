@@ -1,13 +1,13 @@
 import {
-  Alert,
-  Box, Button,
-  CircularProgress, Container, TextField, Typography
+  Alert, Button, CircularProgress, Container, Paper, TextField, Typography
 } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import NavBar from "../../Shared/NavBar/NavBar";
 import useAuth from "./../../Hooks/useAuth";
 import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
+
 
 const Registration = () => {
   const [loginData, setLoginData] = useState({});
@@ -31,12 +31,11 @@ const Registration = () => {
   };
 
   return (
+    <>
+    <NavBar/>
     <Container sx={{ my: 5 }}>
-      <Box
-        item
-        className="register"
-      >
-        <Typography variant="body1" gutterBottom>
+      <Paper elevation={3} className="input-box">
+        <Typography variant="h5" gutterBottom>
           Register
         </Typography>
         {!isLoading && (
@@ -96,8 +95,8 @@ const Registration = () => {
           <Alert severity="success">User Created successfully!</Alert>
         )}
         {authError && <Alert severity="error">{authError}</Alert>}
-      </Box>
-    </Container>
+      </Paper>
+    </Container></>
   );
 };
 

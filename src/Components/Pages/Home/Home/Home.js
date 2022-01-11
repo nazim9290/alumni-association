@@ -1,4 +1,5 @@
 import React from "react";
+import NavBar from "../../../Shared/NavBar/NavBar";
 import About from "../About/About";
 import Carousel from "../Carousel/Carousel";
 import HomeBlog from "../HomeBlog/HomeBlog";
@@ -12,6 +13,7 @@ import "./Home.css";
 const Home = () => {
   return (
     <section id="home">
+      <NavBar/>
       <PopUp />
       <Carousel />
       <UpcomingEvents />

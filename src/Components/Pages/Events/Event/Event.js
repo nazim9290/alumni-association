@@ -1,11 +1,10 @@
+import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
 import React from "react";
 import Countdown from "../../../Shared/Countdwon/Countdwon";
-import "./Upcoming.css";
-
-const UpcomingEvents = () => {
+import "../../Home/UpcomingEvents/Upcoming.css";
+const Event = () => {
   return (
     <div>
       <Grid
@@ -13,20 +12,14 @@ const UpcomingEvents = () => {
         spacing={1}
         sx={{ boxShadow: 3, my: 5, p: 4, bgcolor: "#e0f2f1" }}
       >
-        <Grid item xs={12} md={6} data-aos="zoom-in" data-aos-duration="1000">
+        <Grid item xs={12} md={6}>
           <img
             src="https://sayidan.kenzap.com/wp-content/uploads/2016/07/galery-popup-14-4-569x331.jpg"
             alt=""
             width="100%"
           />
         </Grid>
-        <Grid
-          item
-          xs={12}
-          md={6}
-          data-aos="zoom-out-up"
-          data-aos-duration="1500"
-        >
+        <Grid item xs={12} md={6}>
           <Grid container>
             <Grid item xs={9} md={10}>
               <div className="event-title">
@@ -49,8 +42,12 @@ const UpcomingEvents = () => {
                   <Countdown />
                 </Typography>
               </Grid>
-              <Grid item xs={3} md={4}>
-                <Button color="warning" variant="contained">
+              <Grid item xs={4} md={4}>
+                <Button
+                  sx={{ width: "100%", p: 2 }}
+                  color="warning"
+                  variant="contained"
+                >
                   Join Now
                 </Button>
               </Grid>
@@ -62,4 +59,4 @@ const UpcomingEvents = () => {
   );
 };
 
-export default UpcomingEvents;
+export default Event;

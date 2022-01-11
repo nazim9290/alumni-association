@@ -1,7 +1,17 @@
-.login {
-  margin: 20px auto;
-  padding: 10px;
-  width: 70%;
+.login-section {
+  display: flex;
+  padding: 50px 0;
+  width: 50%;
+  margin: auto;
+}
+.input-box {
+  padding: 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .login-section {
+    width: 100%;
+  }
 }
 .register{
   display: flex;

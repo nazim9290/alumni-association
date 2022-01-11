@@ -1,15 +1,30 @@
 .footer {
-  background-color: #7f8fa6;
+  background-color: #152a3d;
   padding-bottom: 20px;
   margin-top: 10px;
 }
+.footer h4 {
+  text-align: start;
+  font-size: 20px;
+  color: #0f75b0;
+  margin-left: 10px;
+}
+
 .footer-item a {
   text-decoration: none;
   color: white;
+  display: block;
+  text-align: start;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 .footer .logo {
   background-color: white;
   margin-top: 10px;
   border-radius: 50%;
   padding: 10px;
+}
+.footer .rights {
+  font-size: 14px;
+  color: lightgrey;
 }

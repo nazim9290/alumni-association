@@ -14,7 +14,7 @@ const DonorsMember = () => {
     <Box sx={{ my: 5 }}>
       <h1>Donors Member</h1>
       <Swiper
-        slidesPerView={1}
+        slidesPerView={2}
         spaceBetween={5}
         autoplay={{ delay: 1000 }}
         loop={true}

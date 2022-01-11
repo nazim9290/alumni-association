@@ -54,8 +54,9 @@ select {
 .member-form input[type="file"] {
   color: white;
 }
-.container button[type="submit"],
+.member-form button[type="submit"],
 .member-form input[type="submit"] {
+  cursor: pointer;
   background: #ec5990;
   color: white;
   text-transform: uppercase;

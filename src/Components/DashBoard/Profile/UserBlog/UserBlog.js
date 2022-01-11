@@ -1,18 +1,8 @@
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
-import Fab from "@mui/material/Fab";
-import Paper from "@mui/material/Paper";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuth from "./../../../Hooks/useAuth";
-import Regex from "./../../../Shared/Regex/Regex";
+
 
 const columns = [
   { id: "Name", label: "Name", minWidth: 100 },
@@ -35,6 +25,7 @@ const columns = [
 ];
 
 const UserBlog = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [blogs, setBlogs] = useState([]);
   const [page, setPage] = React.useState(0);
@@ -42,6 +33,9 @@ const UserBlog = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
+  };
+  const handleUpdate = (id) => {
+    navigate(`/Dashboard/BlogEdit/${id}`);
   };
 
   const handleChangeRowsPerPage = (event) => {
@@ -66,10 +60,28 @@ const UserBlog = () => {
         // always executed
       });
   }, [user.email]);
+
+  //delet api call
+  const deleteBlog = (id) => {
+    let result = window.confirm("Are you sure you want to delete?");
+    if (result) {
+      fetch(`https://calm-escarpment-64359.herokuapp.com/blog/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("deleted successfully");
+            const remainingPost = blogs.filter((blog) => blog._id !== id);
+            setBlogs(remainingPost);
+          }
+        });
+    }
+  };
   return (
     <div>
       <h4>Your Blogs</h4>
-      <Paper sx={{ width: "100%", overflow: "hidden",}}>
+      {/* <Paper sx={{ width: "100%", overflow: "hidden",}}>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
@@ -88,23 +100,36 @@ const UserBlog = () => {
             <TableBody>
               {blogs
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => {
+                .map((blog) => {
                   return (
                     <TableRow
-                      key={row._id}
+                      key={blog._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {row.title}
+                        {blog.title}
                       </TableCell>
-                      <TableCell>{row.category}</TableCell>
-                      <TableCell>{Regex(row?.description)}</TableCell>
+                      <TableCell>{blog.category}</TableCell>
+                      <TableCell>{Regex(blog?.description)}</TableCell>
                       <TableCell>Pending</TableCell>
                       <TableCell>
-                        <Fab sx={{ mr: 2 }} color="secondary" aria-label="edit">
+                        <Fab
+                          onClick={() => {
+                            handleUpdate(blog._id);
+                          }}
+                          sx={{ mr: 2 }}
+                          color="secondary"
+                          aria-label="edit"
+                        >
                           <EditIcon />
                         </Fab>
-                        <Fab color="primary" aria-label="edit">
+                        <Fab
+                          onClick={() => {
+                            deleteBlog(blog._id);
+                          }}
+                          color="primary"
+                          aria-label="edit"
+                        >
                           <DeleteIcon />
                         </Fab>
                       </TableCell>
@@ -123,7 +148,7 @@ const UserBlog = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-      </Paper>
+      </Paper> */}
     </div>
   );
 };

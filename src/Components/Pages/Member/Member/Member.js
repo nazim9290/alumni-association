@@ -32,19 +32,23 @@ const Member = () => {
           <Grid item xs={2} sm={4} md={3} key={index}>
             <Card>
               <Box>
-                <CardMedia
-                  component="img"
-                  height="auto"
-                  image="https://i.ibb.co/Bg7h9Qz/nazim.jpg"
-                  alt="green iguana"
-                />
+                <img height="300px" src={member.picture} alt="" />
               </Box>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {member.name}
+                  {member.fullName}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {member.batch}
+                  {member?.place} , {member?.position}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Dakhil Year - {member.examYear}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  <a href={`mailto:${member.examYear}`}>{member.email}</a>
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Blood Group - {member.blood}
                 </Typography>
               </CardContent>
 
@@ -55,11 +59,18 @@ const Member = () => {
                   alignItems="center"
                   spacing={1}
                 >
-                  <i className="fas fa-phone-square-alt"></i>
-                  <i className="fab fa-twitter"></i>
-                  <i className="fab fa-facebook"></i>
-
-                  <i className="fab fa-linkedin"></i>
+                  <a href={`tel:${member.phone}`}>
+                    <i className="fas fa-phone-square-alt"></i>
+                  </a>
+                  <a href={member.facebookUrl} target="_blank">
+                    <i className="fab fa-twitter"></i>
+                  </a>
+                  <a href={member.facebookUrl} target="_blank">
+                    <i className="fab fa-facebook"></i>
+                  </a>
+                  <a href={member.facebookUrl} target="_blank">
+                    <i className="fab fa-linkedin"></i>
+                  </a>
                 </Stack>
               </Box>
             </Card>

@@ -10,6 +10,9 @@ import {
   updateProfile,
   getIdToken,
   signOut,
+  sendEmailVerification,
+  sendPasswordResetEmail,
+  FacebookAuthProvider,
 } from "firebase/auth";
 import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import axios from "axios";
@@ -28,8 +31,9 @@ const useFirebase = () => {
   const auth = getAuth();
   const storage = getStorage();
   const googleProvider = new GoogleAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
-  const registerUser = (email, password, name, navigate) => {
+  const registerUser = (email, password, name, navigate = "/") => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -53,6 +57,26 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
+  const verifyEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      // Email verification sent!
+      // ...
+    });
+  };
+
+  const forgotPassword = (email) => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        // Password reset email sent!
+        // ..
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  };
+
   const loginUser = (email, password, location, navigate) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
@@ -67,9 +91,10 @@ const useFirebase = () => {
       .finally(() => setIsLoading(false));
   };
 
-  const signInWithGoogle = (location, navigate) => {
+  //Google or facebook sign in option
+  const signInWithGoogleOrFacebook = (provider, location, navigate) => {
     setIsLoading(true);
-    signInWithPopup(auth, googleProvider)
+    signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
         saveUser(user.email, user.displayName, "PUT");
@@ -169,9 +194,13 @@ const useFirebase = () => {
     authError,
     registerUser,
     loginUser,
-    signInWithGoogle,
+    signInWithGoogleOrFacebook,
+
+    googleProvider,
+    facebookProvider,
     logout,
     posts,
+    forgotPassword,
   };
 };
 

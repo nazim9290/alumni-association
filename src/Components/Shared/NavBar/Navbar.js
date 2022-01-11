@@ -1,26 +1,26 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import logo from "../../../img/logo.png";
-import { NavLink, Link } from "react-router-dom";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AddIcCallRoundedIcon from "@mui/icons-material/AddIcCallRounded";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import MenuIcon from "@mui/icons-material/Menu";
+import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Toolbar from "@mui/material/Toolbar";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../../../img/logo.png";
+import useAuth from "../../Hooks/useAuth";
 import "./Navbar.css";
-import useAuth from "./../../Hooks/useAuth";
 
 const pages = ["Home", "About", "Events", "Committee", "Blog", "Member"];
 const settings = ["Dashboard"];
 
-function Navbar() {
+function NavBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { user, logout } = useAuth();
@@ -212,4 +212,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default NavBar;
