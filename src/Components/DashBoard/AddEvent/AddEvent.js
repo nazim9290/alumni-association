@@ -1,7 +1,7 @@
 import { Box, Button, Container, Stack, TextField } from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
 import "./Events.css";
-import axios from "axios";
 
 const AddEvent = () => {
   const [image, setImage] = useState("");
@@ -94,7 +94,7 @@ const AddEvent = () => {
               />
             </Box>
             <Box>
-              <label>Event :</label>
+              <label>Event Time :</label>
               <input
                 type="time"
                 name="time"

@@ -1,8 +1,8 @@
-import { TextField, Paper, Typography } from "@mui/material";
+import { Container, Paper, TextField, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
 import useAuth from "./../../Hooks/useAuth";
 import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
@@ -30,21 +30,16 @@ const Login = () => {
 
   return (
     <section className="login">
-      <Paper elevation={3} sx={{ width: "50%", m: "auto", p: 5 }}>
+      <Container>
+      <Paper elevation={3} className="login">
         <Typography variant="h4">LOG IN</Typography>
         <form onSubmit={handleLoginSubmit}>
           <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-
-              mx: "auto",
-              boxShadow: 3,
-            }}
+           
           >
             <TextField
               id="standard-textarea"
-              label="email"
+              label="email :"
               placeholder="Enter your Email"
               multiline
               type="email"
@@ -56,7 +51,7 @@ const Login = () => {
             />
             <TextField
               id="standard-textarea"
-              label="password"
+              label="password :"
               placeholder="Create Password"
               multiline
               type="password"
@@ -76,6 +71,7 @@ const Login = () => {
         </Box>
         <LoginIcon />
       </Paper>
+      </Container>
     </section>
   );
 };

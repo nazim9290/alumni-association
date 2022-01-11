@@ -1,10 +1,9 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
-import logo from "../../../img/logo.png";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../img/logo.png";
 import "./Footer.css";
-import { Container } from "@mui/material";
 
 const Footer = () => {
   return (
@@ -26,15 +25,28 @@ const Footer = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <h4>Quick Links</h4>
-            <Link to="home">Home</Link>
+            <a href="#home">Home</a>
+            <a href="#About">About Us</a>
+            <a href="#News">News</a>
+            <a href="#FAQ">FAQ</a>
+            <a href="#Contact Us">Contact Us</a>
+            <a href="#Testimonials">Testimonials</a>
+            <a href="#Sitemap">Sitemap</a>
           </Grid>
           <Grid item xs={6} md={3}>
             <h4>Committee</h4>
-            <Link to="home">Home</Link>
+            <Link to="/Advisory Board">Advisory Board</Link>
+            <Link to="/Executive Board">Executive Board</Link>
+            <Link to="/Executive Member">Executive Member</Link>
+            <Link to="/Tech Team">Tech Team</Link>
+            <Link to="/Constitution">Constitution</Link>
+            <Link to="/Doner list">Doner list</Link>
           </Grid>
           <Grid item xs={6} md={2}>
             <h4>Contact</h4>
-            <Link to="home">Home</Link>
+            <Box>Hazi Madbor Ali Hasania Dakhil Madrasha
+                          2626, Khilbarirtake,Vatara, Dhaka- 1212
+                          </Box>
           </Grid>
         </Grid>
       </Box>

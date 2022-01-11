@@ -1,17 +1,14 @@
-import React, { useState } from "react";
 import {
-  Container,
-  Typography,
-  TextField,
-  Button,
-  CircularProgress,
   Alert,
-  Box,
+  Box, Button,
+  CircularProgress, Container, TextField, Typography
 } from "@mui/material";
-
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "./../../Hooks/useAuth";
+import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
+
 const Registration = () => {
   const [loginData, setLoginData] = useState({});
   const navigate = useNavigate();
@@ -37,16 +34,7 @@ const Registration = () => {
     <Container sx={{ my: 5 }}>
       <Box
         item
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: "50%",
-          justifyContent: "center",
-          alignItems: "center",
-          boxShadow: 3,
-          m: "auto",
-          p: 5,
-        }}
+        className="register"
       >
         <Typography variant="body1" gutterBottom>
           Register

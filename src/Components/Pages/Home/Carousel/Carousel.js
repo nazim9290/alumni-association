@@ -1,16 +1,12 @@
 import React from "react";
+import SwiperCore, {
+  Autoplay, Keyboard, Mousewheel, Navigation,
+  Pagination
+} from "swiper";
+import "swiper/modules/navigation/navigation.min.css";
+import "swiper/modules/pagination/pagination.min.css";
 import { Swiper, SwiperSlide } from "swiper/react/swiper-react";
 import "swiper/swiper.min.css";
-import "swiper/modules/pagination/pagination.min.css";
-import "swiper/modules/navigation/navigation.min.css";
-import SwiperCore, {
-  Autoplay,
-  Navigation,
-  Pagination,
-  Mousewheel,
-  Keyboard,
-} from "swiper";
-
 import "./Carousel.css";
 import { data } from "./FrontSlide";
 
@@ -19,7 +15,6 @@ const Carousel = () => {
   return (
     <div className="carousel">
       <>
-        <marquee>This text will scroll from right to left</marquee>
         <Swiper
           cssMode={true}
           navigation={true}
