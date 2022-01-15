@@ -1,4 +1,5 @@
 .profile .effect {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,3 +73,4 @@
   opacity: 0profile 0.1;
   transform: translate(-50%, -50%) scale(1);
 }
+

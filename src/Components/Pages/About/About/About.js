@@ -1,11 +1,13 @@
+import { Box } from "@mui/material";
 import React from "react";
+import NavBar from "../../../Shared/NavBar/NavBar";
 import PunormiloniCommittee from "../CommitteeOfPunorMiloni/PunormiloniCommittee";
 import AboutHasania from "./AboutHasania";
-import { Box } from "@mui/material";
 
 const About = () => {
   return (
-    <Box>
+    <Box id="About">
+      <NavBar/>
       <AboutHasania />
       <PunormiloniCommittee />
     </Box>

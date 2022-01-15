@@ -1,17 +1,17 @@
-import * as React from "react";
-import PropTypes from "prop-types";
+import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import PropTypes from "prop-types";
+import * as React from "react";
 import { Outlet } from "react-router-dom";
-
 import DashboardRoute from "./DashboardRoute";
+
 
 const drawerWidth = 200;
 
@@ -28,6 +28,8 @@ function Dashboard(props) {
       <Toolbar />
       <Divider />
       <DashboardRoute />
+      <Divider />
+
     </div>
   );
 
@@ -41,6 +43,7 @@ function Dashboard(props) {
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          
           ml: { sm: `${drawerWidth}px` },
         }}
       >
@@ -78,6 +81,7 @@ function Dashboard(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            
           }}
         >
           {drawer}
@@ -90,6 +94,7 @@ function Dashboard(props) {
               boxSizing: "border-box",
               width: drawerWidth,
             },
+            
           }}
           open
         >
@@ -102,6 +107,7 @@ function Dashboard(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          
         }}
       >
         <Toolbar />

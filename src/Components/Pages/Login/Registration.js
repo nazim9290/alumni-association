@@ -1,19 +1,14 @@
-import React, { useState } from "react";
 import {
-  Container,
-  Typography,
-  TextField,
-  Button,
-  CircularProgress,
-  Alert,
-  Box,
-  Paper,
+  Alert, Button, CircularProgress, Container, Paper, TextField, Typography
 } from "@mui/material";
-import "./Login.css";
-
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import NavBar from "../../Shared/NavBar/NavBar";
 import useAuth from "./../../Hooks/useAuth";
+import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
+
+
 const Registration = () => {
   const [loginData, setLoginData] = useState({});
   const navigate = useNavigate();
@@ -36,6 +31,8 @@ const Registration = () => {
   };
 
   return (
+    <>
+    <NavBar/>
     <Container sx={{ my: 5 }}>
       <Paper elevation={3} className="input-box">
         <Typography variant="h5" gutterBottom>
@@ -99,7 +96,7 @@ const Registration = () => {
         )}
         {authError && <Alert severity="error">{authError}</Alert>}
       </Paper>
-    </Container>
+    </Container></>
   );
 };
 

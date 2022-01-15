@@ -1,12 +1,12 @@
-import { TextField, Paper, Typography, Stack } from "@mui/material";
+import { Button, Paper, Stack, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Button from "@mui/material/Button";
+import ResetPassword from "../../Shared/DialogBox/ResetPassword";
+import NavBar from "../../Shared/NavBar/NavBar";
 import useAuth from "./../../Hooks/useAuth";
 import "./Login.css";
 import LoginIcon from "./LoginIcon/LoginIcon";
-import ResetPassword from "../../Shared/DialogBox/ResetPassword";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
@@ -40,6 +40,8 @@ const Login = () => {
   };
 
   return (
+    <>
+    <NavBar/>
     <section className="login-section">
       <Paper elevation={3} className="input-box">
         <Typography variant="h4">LOG IN</Typography>
@@ -47,7 +49,7 @@ const Login = () => {
           <Box>
             <TextField
               id="standard-textarea"
-              label="email"
+              label="email :"
               placeholder="Enter your Email"
               multiline
               type="email"
@@ -59,7 +61,7 @@ const Login = () => {
             />
             <TextField
               id="standard-textarea"
-              label="password"
+              label="password :"
               placeholder="Create Password"
               multiline
               type="password"
@@ -97,6 +99,7 @@ const Login = () => {
         open={open}
       />
     </section>
+    </>
   );
 };
 

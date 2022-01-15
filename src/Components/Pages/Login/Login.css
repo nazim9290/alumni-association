@@ -13,3 +13,22 @@
     width: 100%;
   }
 }
+.register{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 3;
+ margin: auto;
+ padding: 10px;
+}
+
+@media screen and (max-width: 480px) {
+  .register{
+    width: 100%;
+  }
+  .login {
+    width: 100%;
+  }
+}

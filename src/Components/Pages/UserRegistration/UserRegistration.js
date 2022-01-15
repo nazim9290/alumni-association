@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import NavBar from "../../Shared/NavBar/NavBar";
 import "./Form.css";
 
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 
 const UserRegistration = () => {
   const [url, setUrl] = useState("");
@@ -84,6 +85,7 @@ const UserRegistration = () => {
   }, []);
   return (
     <>
+    <NavBar/>
       <div className="member-form">
         <h1>Become A Member</h1>
 

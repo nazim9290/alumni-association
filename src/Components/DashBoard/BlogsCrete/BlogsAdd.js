@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import { EditorState, convertToRaw } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
+import { Box } from "@mui/material";
+import axios from "axios";
+import { convertToRaw, EditorState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
+import React, { useState } from "react";
+import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import useAuth from "./../../Hooks/useAuth";
+import SweetAlert from "./../../Shared/SweetAlert/SweetAlert";
 import "./Blogs.css";
+import Config from "./Config";
 import NowDate from "./NowDate";
 import categorys from "./useCategory";
-import useAuth from "./../../Hooks/useAuth";
-import { Box } from "@mui/material";
-import Swal from "sweetalert2";
-import Config from "./Config";
-import SweetAlert from "./../../Shared/SweetAlert/SweetAlert";
+
 
 function BlogsAdd() {
   let editorState = EditorState.createEmpty();
@@ -38,6 +38,8 @@ function BlogsAdd() {
   };
   const nowDate = NowDate();
 
+
+//image processing and send file cloudinary
   const processFile = (e) => {
     var image = e.target.files[0];
     const data = new FormData();
@@ -55,6 +57,7 @@ function BlogsAdd() {
       .catch((err) => console.log(err));
   };
 
+  //Blogs details data send to backend
   const addDetails = async (event) => {
     try {
       event.preventDefault();

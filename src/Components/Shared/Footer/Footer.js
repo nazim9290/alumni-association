@@ -1,10 +1,10 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
-import logo from "../../../img/logo.png";
+import { Divider } from "@mui/material";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../img/logo.png";
 import "./Footer.css";
-import { Container, Divider } from "@mui/material";
 
 const Footer = () => {
   return (

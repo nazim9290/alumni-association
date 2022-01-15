@@ -1,8 +1,8 @@
-import { Container, Paper, Typography, Grid, Avatar, Box } from "@mui/material";
-import { useState, useEffect } from "react";
+import { Avatar, Box, Container, Grid, Paper, Typography } from "@mui/material";
 import axios from "axios";
-import "./Profile.css";
+import { useEffect, useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
+import "./Profile.css";
 import UserBlog from "./UserBlog/UserBlog";
 
 export default function App() {
@@ -31,8 +31,9 @@ export default function App() {
   }, []);
 
   return (
-    <Container className="profile" maxWidth="xl" sx={{ my: 1 }}>
-      <Paper className="effect effect-c" elevation={3}>
+    <Container>
+    <Typography className="profile" maxWidth="xl" sx={{ my: 1 }}>
+      <Paper className="effect effect-c " elevation={3}>
         <Typography className="effect__heading">“{quote.text}”</Typography>
         <Typography className="effect__subheading">
           __ {quote.author ? quote.author : "Anonymous"} __
@@ -71,6 +72,7 @@ export default function App() {
         </Grid>
       </Paper>
       <UserBlog />
+    </Typography>
     </Container>
   );
 }

@@ -1,33 +1,30 @@
+import { Helmet } from "react-helmet";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./Components/Pages/Home/Home/Home";
-import { BrowserRouter } from "react-router-dom";
-import { Routes } from "react-router-dom";
-import { Route } from "react-router-dom";
-import About from "./Components/Pages/About/About/About";
-import Events from "./Components/Pages/Events/Events/Events";
-import Login from "./Components/Pages/Login/Login";
-import Registration from "./Components/Pages/Login/Registration";
-import Notfound from "./Components/Pages/Notfound/Notfound";
-import UserRegistration from "./Components/Pages/UserRegistration/UserRegistration";
-import Navbar from "./Components/Shared/NavBar/Navbar";
-import Footer from "./Components/Shared/Footer/Footer";
 import AuthProvider from "./Components/Context/AuthProvider";
-import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
-import Members from "./Components/Pages/Member/Members/Members";
-import Committees from "./Components/Pages/Committee/Committee/Committees";
-import Profile from "./Components/DashBoard/Profile/Profile";
+import AddCommittee from "./Components/DashBoard/AddCommittee/AddCommittee";
+import AddEvent from "./Components/DashBoard/AddEvent/AddEvent";
+import BlogsAdd from "./Components/DashBoard/BlogsCrete/BlogsAdd";
 import Edit from "./Components/DashBoard/BlogsCrete/Edit";
 import Dashboard from "./Components/DashBoard/Dashboard/Dashboard";
-import BlogsAdd from "./Components/DashBoard/BlogsCrete/BlogsAdd";
-import MakeAdmin from "./Components/DashBoard/MakeAdmin/MakeAdmin";
-import { Helmet } from "react-helmet";
-import Blogs from "./Components/Pages/Blogs/Blogs/Blogs";
-import AddEvent from "./Components/DashBoard/AddEvent/AddEvent";
-import PrivateRoute from "./Components/Pages/Login/PrivateRoute/PrivateRoute";
-import BlogEdit from "./Components/DashBoard/BlogsCrete/BlogEdit";
 import EditBlog from "./Components/DashBoard/EditBlog/EditBlog";
+import MakeAdmin from "./Components/DashBoard/MakeAdmin/MakeAdmin";
+import Profile from "./Components/DashBoard/Profile/Profile";
+import About from "./Components/Pages/About/About/About";
+import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
+import Blogs from "./Components/Pages/Blogs/Blogs/Blogs";
+import Committees from "./Components/Pages/Committee/Committee/Committees";
+import Events from "./Components/Pages/Events/Events/Events";
+import Home from "./Components/Pages/Home/Home/Home";
+import Login from "./Components/Pages/Login/Login";
+import PrivateRoute from "./Components/Pages/Login/PrivateRoute/PrivateRoute";
+import Registration from "./Components/Pages/Login/Registration";
+import Members from "./Components/Pages/Member/Members/Members";
+import Notfound from "./Components/Pages/Notfound/Notfound";
 import Privacy from "./Components/Pages/Privacy&policy/Privacy";
-import AddCommittee from "./Components/DashBoard/AddCommittee/AddCommittee";
+import UserRegistration from "./Components/Pages/UserRegistration/UserRegistration";
+import Footer from "./Components/Shared/Footer/Footer";
+
 
 function App() {
   return (
@@ -41,10 +38,11 @@ function App() {
             </title>
             <link rel="canonical" href="http://mysite.com/example" />
           </Helmet>
-          <Navbar />
+         
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
+            <Route path="/DashBoard/Home" element={<Home />} />
             <Route path="/About" element={<About />} />
             <Route path="/Events" element={<Events />} />
             <Route path="/Blog" element={<Blogs />} />
