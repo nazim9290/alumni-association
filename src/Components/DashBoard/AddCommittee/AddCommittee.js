@@ -40,7 +40,7 @@ const AddCommittee = () => {
       designationId: userInfo.designation[0],
     };
     console.log(designation);
-    fetch("http://localhost:5000/designation", {
+    fetch("https://calm-escarpment-64359.herokuapp.com/designation", {
       method: "PUT",
       headers: {
         authorization: `Bearer ${token}`,

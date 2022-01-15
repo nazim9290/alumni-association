@@ -16,7 +16,7 @@ export default function ResetPassword({ handleClickOpen, handleClose, open }) {
   const handleSubmit = () => {
     console.log(email);
     if (email) {
-      // forgotPassword(email)
+      forgotPassword(email);
       handleClose();
       SweetAlert("See Your Email Inbox and Reset Your Password");
     } else {
