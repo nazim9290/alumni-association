@@ -2,7 +2,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CreateIcon from "@mui/icons-material/Create";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import HomeIcon from '@mui/icons-material/Home';
+import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
 import { Box } from "@mui/material";
@@ -13,12 +13,18 @@ import ListItemText from "@mui/material/ListItemText";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import useAuth from "./../../Hooks/useAuth";
-
+import ContactPageIcon from "@mui/icons-material/ContactPage";
 
 const DashboardRoute = () => {
   const { logout, user, admin } = useAuth();
-  const icons = [<HomeIcon/>,<AccountCircleIcon />, <CreateIcon />, <LogoutIcon />];
-  const route = ["Home","Profile", "Blog Write", "Log Out"];
+  const icons = [
+    <HomeIcon />,
+    <AccountCircleIcon />,
+    <ContactPageIcon />,
+    <CreateIcon />,
+    <LogoutIcon />,
+  ];
+  const route = ["Home", "Profile", "My Info", "Blog Write", "Log Out"];
   const adminicons = [
     <SupervisorAccountIcon />,
     <EventNoteIcon />,
@@ -46,7 +52,7 @@ const DashboardRoute = () => {
       {/* for all user  */}
       {user.email && (
         <List>
-          {["Home","", "BlogWrite", "Logout"].map((text, index) => (
+          {["Home", "", "MyInfo", "BlogWrite", "Logout"].map((text, index) => (
             <Box key={index}>
               {text === "Logout" ? (
                 <ListItem onClick={logout} button>

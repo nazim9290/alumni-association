@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./Countdown.css";
 
-function Countdown() {
+function Countdown({ date, time }) {
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -12,7 +12,7 @@ function Countdown() {
 
   useEffect(() => {
     // Set the date we're counting down to
-    var countDownDate = new Date("2023 01 04 8:00:30").getTime();
+    var countDownDate = new Date(`${date} ${time}`).getTime();
 
     // Update the count down every 1 second
     var x = setInterval(function () {

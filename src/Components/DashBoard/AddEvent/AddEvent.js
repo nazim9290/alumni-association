@@ -1,6 +1,7 @@
 import { Box, Button, Container, Stack, TextField } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
+import SweetAlert from "../../Shared/SweetAlert/SweetAlert";
 import "./Events.css";
 
 const AddEvent = () => {
@@ -42,7 +43,11 @@ const AddEvent = () => {
       title: eventInfo.title,
       image: image,
       description: eventInfo.description,
-      date: eventInfo.date,
+      date: new Date(eventInfo.date).toLocaleString("en-us", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
       time: eventInfo.time,
     };
     axios
@@ -50,6 +55,9 @@ const AddEvent = () => {
       .then(function (res) {
         console.log(res);
         if (res.data.insertedId) {
+          setEventInfo({ title: "", description: "", date: "", time: "" });
+
+          SweetAlert("Event is Add");
         }
       })
       .catch(function (error) {
@@ -58,6 +66,7 @@ const AddEvent = () => {
   };
   return (
     <Container maxWidth="xl">
+      <h3>Add Event Details</h3>
       <form onSubmit={eventSubmit}>
         <Stack
           direction="column"

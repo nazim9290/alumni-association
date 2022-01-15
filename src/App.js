@@ -9,6 +9,7 @@ import Edit from "./Components/DashBoard/BlogsCrete/Edit";
 import Dashboard from "./Components/DashBoard/Dashboard/Dashboard";
 import EditBlog from "./Components/DashBoard/EditBlog/EditBlog";
 import MakeAdmin from "./Components/DashBoard/MakeAdmin/MakeAdmin";
+import MyInfo from "./Components/DashBoard/My Info/MyInfo";
 import Profile from "./Components/DashBoard/Profile/Profile";
 import About from "./Components/Pages/About/About/About";
 import BlogDetails from "./Components/Pages/BlogDetails/BlogDetails";
@@ -25,7 +26,6 @@ import Privacy from "./Components/Pages/Privacy&policy/Privacy";
 import UserRegistration from "./Components/Pages/UserRegistration/UserRegistration";
 import Footer from "./Components/Shared/Footer/Footer";
 
-
 function App() {
   return (
     <div className="App">
@@ -38,7 +38,7 @@ function App() {
             </title>
             <link rel="canonical" href="http://mysite.com/example" />
           </Helmet>
-         
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Home" element={<Home />} />
@@ -61,6 +61,7 @@ function App() {
             >
               <Route path="/Dashboard" element={<Profile />} />
               <Route path={`/Dashboard/BlogWrite`} element={<BlogsAdd />} />
+              <Route path={`/Dashboard/MyInfo`} element={<MyInfo />} />
               <Route
                 path={`/Dashboard/BlogEdit/:blogId`}
                 element={<EditBlog />}

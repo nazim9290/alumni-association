@@ -1,8 +1,21 @@
+import {
+  Fab,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./../../../Hooks/useAuth";
-
+import Regex from "./../../../Shared/Regex/Regex";
+import { EditIcon } from "@mui/icons-material/Edit";
+import { DeleteIcon } from "@mui/icons-material/Delete";
 
 const columns = [
   { id: "Name", label: "Name", minWidth: 100 },
@@ -59,7 +72,7 @@ const UserBlog = () => {
       .then(function () {
         // always executed
       });
-  }, [user.email]);
+  }, []);
 
   //delet api call
   const deleteBlog = (id) => {
@@ -81,7 +94,8 @@ const UserBlog = () => {
   return (
     <div>
       <h4>Your Blogs</h4>
-      {/* <Paper sx={{ width: "100%", overflow: "hidden",}}>
+      {blogs.length}
+      {/* <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
             <TableHead>
@@ -103,19 +117,19 @@ const UserBlog = () => {
                 .map((blog) => {
                   return (
                     <TableRow
-                      key={blog._id}
+                      key={blog?._id}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
-                        {blog.title}
+                        {blog?.title}
                       </TableCell>
-                      <TableCell>{blog.category}</TableCell>
+                      <TableCell>{blog?.category}</TableCell>
                       <TableCell>{Regex(blog?.description)}</TableCell>
                       <TableCell>Pending</TableCell>
                       <TableCell>
                         <Fab
                           onClick={() => {
-                            handleUpdate(blog._id);
+                            handleUpdate(blog?._id);
                           }}
                           sx={{ mr: 2 }}
                           color="secondary"
@@ -142,7 +156,7 @@ const UserBlog = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={blogs.length}
+          count={blogs?.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

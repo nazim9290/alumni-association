@@ -1,4 +1,12 @@
-import { Avatar, Box, Container, Grid, Paper, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Container,
+  Grid,
+  Paper,
+  Stack,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "./../../Hooks/useAuth";
@@ -32,17 +40,22 @@ export default function App() {
 
   return (
     <Container>
-    <Typography className="profile" maxWidth="xl" sx={{ my: 1 }}>
-      <Paper className="effect effect-c " elevation={3}>
-        <Typography className="effect__heading">“{quote.text}”</Typography>
-        <Typography className="effect__subheading">
-          __ {quote.author ? quote.author : "Anonymous"} __
-        </Typography>
-      </Paper>
-      <br />
-      <Paper elevation={3}>
-        <Grid container sx={{ p: 5 }}>
-          <Grid item xs={4}>
+      <Typography maxWidth="xl" sx={{ my: 1 }}>
+        <Paper elevation={3} sx={{ p: 5 }}>
+          <Typography>“{quote.text}”</Typography>
+          <Typography>
+            __ {quote.author ? quote.author : "Anonymous"} __
+          </Typography>
+        </Paper>
+        <br />
+        <Paper elevation={3}>
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            sx={{ p: 5 }}
+            justifyContent="space-evenly"
+            alignItems="center"
+            spacing={2}
+          >
             <Avatar sx={{ width: 100, height: 100, mt: 5, ml: 5 }}>
               {user.photoURL === null ? (
                 `${user.displayName.split(" ")[0][0]}${
@@ -52,9 +65,8 @@ export default function App() {
                 <img src={user?.photoURL} alt="" />
               )}
             </Avatar>
-          </Grid>
-          <Grid item xs={8}>
-            <Box sx={{ mt: 5 }}>
+
+            <Box sx={{ textAlign: "start" }}>
               <Typography variant="h6">
                 <b>Name:</b> {user.displayName}
               </Typography>
@@ -62,17 +74,15 @@ export default function App() {
                 <b>Email:</b> {user.email}
               </Typography>
             </Box>
-          </Grid>
-          <Grid item xs={12}>
+
             <input type="file" onChange={handleChange} />
             <button disabled={loading || !photo} onClick={handleClick}>
               Upload
             </button>
-          </Grid>
-        </Grid>
-      </Paper>
-      <UserBlog />
-    </Typography>
+          </Stack>
+        </Paper>
+        <UserBlog />
+      </Typography>
     </Container>
   );
 }

@@ -1,5 +1,4 @@
 .profile .effect {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,3 +73,9 @@
   transform: translate(-50%, -50%) scale(1);
 }
 
+.profile_pic {
+  width: 100px;
+  height: 100px;
+  margin-top: 5;
+  margin-left: 5;
+}

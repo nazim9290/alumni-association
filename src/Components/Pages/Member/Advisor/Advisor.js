@@ -5,7 +5,7 @@ import "swiper/modules/pagination/pagination.min.css";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 import "./Advisor.css";
 import Typography from "@mui/material/Typography";
-import { Paper, Box } from "@mui/material";
+import { Box, Card, CardContent } from "@mui/material";
 
 const Advisor = () => {
   SwiperCore.use([Autoplay]);
@@ -15,7 +15,7 @@ const Advisor = () => {
       <h1>Advisor</h1>
       <>
         <Swiper
-          slidesPerView={2}
+          slidesPerView={1}
           spaceBetween={5}
           autoplay={{ delay: 1000 }}
           loop={true}
@@ -40,27 +40,25 @@ const Advisor = () => {
         >
           {Array.from(Array(12)).map((_, index) => (
             <SwiperSlide key={index}>
-              <Paper elevation={3}>
-                <img
-                  height="100%"
-                  src="http://nmphsaabd.org/wp-content/uploads/2020/08/minto.jpg"
-                  alt="green iguana"
-                />
+              <Card>
                 <Box>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ my: 2 }}
-                  >
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
-                  </Typography>
+                  <img
+                    src="http://nmphsaabd.org/wp-content/uploads/2020/08/minto.jpg"
+                    alt=""
+                  />
                 </Box>
-              </Paper>
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    hello
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Aliquam modi iste illo iusto pariatur perspiciatis
+                    architecto, adipisci vero dolore necessitatibus fuga numquam
+                    <br />
+                  </Typography>
+                </CardContent>
+              </Card>
             </SwiperSlide>
           ))}
         </Swiper>

@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../../Shared/NavBar/NavBar";
+import NavBar from "./../../../Shared/NavBar/Navbar";
 import About from "../About/About";
 import Carousel from "../Carousel/Carousel";
 import HomeBlog from "../HomeBlog/HomeBlog";
@@ -9,11 +9,10 @@ import PopUp from "../PopUp/PopUp";
 import UpcomingEvents from "../UpcomingEvents/UpcomingEvents";
 import "./Home.css";
 
-
 const Home = () => {
   return (
     <section id="home">
-      <NavBar/>
+      <NavBar />
       <PopUp />
       <Carousel />
       <UpcomingEvents />
